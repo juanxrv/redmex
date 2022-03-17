@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
+
+
+class SignupController extends Controller
+{
+  public function store(Request $request)
+  {
+    $request->validate([
+      'name' => 'required',
+      'email' => 'required|email',
+      'password' => 'required|confirmed'
+    ], [
+      'password.confirmed' => 'Las contraseñas no coinciden.',
+      'password.required' => 'La contraseña es obligatoria.'
+    ]);
+    date_default_timezone_set('America/Mexico_City');
+    $user = User::create([
+      'name' => $request->name,
+      'email' => $request->email,
+      'password' => Hash::make($request->password),
+      'avatar' => '',
+      'created_at' => date('c')
+    ]);
+    $user->save();
+    auth()->login($user);
+    return redirect('home');
+  }
+}
