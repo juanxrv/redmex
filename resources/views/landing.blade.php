@@ -2,6 +2,7 @@
 @section('title', 'Suscripción')
 
 @section('content')
+  {{-- {{dd($data['results'][0])}} --}}
   <div id="page-title-pro">
     <div id="progression-studios-page-title-container">
       <div class="container">
@@ -11,7 +12,8 @@
       </div><!-- close .container -->
     </div><!-- close #progression-studios-page-title-container -->
     <div class="clearfix"></div>
-    <div id="page-title-overlay-image" style="background-image:url(http://via.placeholder.com/1600x600);"></div>
+    {{-- http://via.placeholder.com/1600x600 --}}
+    <div id="page-title-overlay-image" style="background-image:url({{ $apibase }}/original/{{$data['results'][0]['backdrop_path']}});"></div>
   </div>
 
 

@@ -230,6 +230,7 @@
         </div><!-- close .col -->
       </div><!-- close .row -->
     </div><!-- close .container -->
+    
   </footer>
   <!-- Required Framework JavaScript -->
   <script src="{{ asset('js/libs/jquery-3.5.1.min.js') }}"></script><!-- jQuery -->

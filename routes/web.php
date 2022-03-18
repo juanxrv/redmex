@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/signup', [SignupController::class, 'store'])->name('signup');
 Route::post('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
-Route::post('/signup', [SignupController::class, 'store'])->name('signup');
 
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/home/{page?}', [HomeController::class, 'index'])->name('home')->middleware('auth');
