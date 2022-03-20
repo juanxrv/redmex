@@ -43,7 +43,7 @@ class UserController extends Controller
     ]);
     $user = User::where('email', $request->email)->first();
     if (isset($user->id)) {
-      if(Hash::check($request->password, $user->password)) {
+      if (Hash::check($request->password, $user->password)) {
         $token = $user->createToken('auth_token')->plainTextToken;
         return response()->json([
           'status' => 'ok',
@@ -77,15 +77,21 @@ class UserController extends Controller
   {
     date_default_timezone_set('America/Mexico_City');
     $user = User::find($request->user()->id);
-    if(isset($user->id)) {
-      $validation = ['email' => 'email'];
-      if(isset($request->password)) {
-        $validation['password'] = 'confirmation';
+    if (isset($user->id)) {
+      $validation = [];
+      if (isset($request->password)) $validation['password'] = 'confirmed';
+      if (isset($request->email)) $validation['email'] = 'email|unique:users';
+      if (count($validation) > 0) {
+        $request->validate($validation, [
+          'email' => 'El correo debe ser válido.',
+          'email.unique' => 'El correo ya está en uso.',
+          'password.confirmed' => 'Las contraseñas no coinciden.'
+        ]);
       }
-      $request->validate($validation, ['email' => 'El correo debe ser válido.']);
-      $user->name = $request->name;
-      $user->email = $request->email;
-      $user->avatar = $request->avatar;
+      isset($request->name) ? $user->name = $request->name : '';
+      isset($validation['email']) ? $user->email = $request->email : '';
+      isset($validation['password']) ? $user->password = Hash::make($request->password) : '';
+      isset($request->avatar) ? $user->avatar = $request->avatar : '';
       $user->save();
       return response()->json([
         'status' => 'ok',
