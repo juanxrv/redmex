@@ -78,7 +78,11 @@ class UserController extends Controller
     date_default_timezone_set('America/Mexico_City');
     $user = User::find($request->user()->id);
     if(isset($user->id)) {
-      $request->validate(['email' => 'email'], ['email' => 'El correo debe ser válido.']);
+      $validation = ['email' => 'email'];
+      if(isset($request->password)) {
+        $validation['password'] = 'confirmation';
+      }
+      $request->validate($validation, ['email' => 'El correo debe ser válido.']);
       $user->name = $request->name;
       $user->email = $request->email;
       $user->avatar = $request->avatar;
