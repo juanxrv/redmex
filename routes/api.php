@@ -11,7 +11,8 @@ Route::post('/login', [UserController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
 
-  Route::get('/user-profile', [UserController::class, 'userProfile']);
+  Route::get('/user', [UserController::class, 'userProfile']);
+  Route::put('/user', [UserController::class, 'updateUser']);
   Route::get('/logout', [UserController::class, 'logout']);
 
   Route::get('/favoritos', [FavoritosController::class, 'index']);
@@ -21,6 +22,6 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
   Route::post('/historial', [HistorialController::class, 'store']);
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-  return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//   return $request->user();
+// });

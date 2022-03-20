@@ -63,9 +63,9 @@
         class="fas fa-chevron-left"></i></a></li>
 
   @if ($page - 1 >= 1)
-    <li><a href="{{ route('home', ['page' => $page-1]) }}#popular">{{ $page-1 }}</a></li>
+    <li><a href="{{ route('home', ['page' => $page - 1]) }}#popular">{{ $page - 1 }}</a></li>
   @endif
-  @for ($i = $page; $i <= $page + 1 ; $i++)
+  @for ($i = $page; $i <= $page + 1; $i++)
     <li><a class="{{ $page == $i ? 'current' : '' }}"
         href="{{ route('home', ['page' => $i]) }}#popular">{{ $i }}</a></li>
   @endfor

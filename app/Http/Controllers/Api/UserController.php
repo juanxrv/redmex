@@ -73,6 +73,28 @@ class UserController extends Controller
     ]);
   }
 
+  public function updateUser(Request $request)
+  {
+    date_default_timezone_set('America/Mexico_City');
+    $user = User::find($request->user()->id);
+    if(isset($user->id)) {
+      $request->validate(['email' => 'email'], ['email' => 'El correo debe ser válido.']);
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->avatar = $request->avatar;
+      $user->save();
+      return response()->json([
+        'status' => 'ok',
+        'msg' => 'Usuario actualizado correctamente.'
+      ]);
+    } else {
+      return response()->json([
+        'status' => 'error',
+        'msg' => 'El usuario no existe.'
+      ], 404);
+    }
+  }
+
   public function logout(Request $request)
   {
     $request->user()->currentAccessToken()->delete();
