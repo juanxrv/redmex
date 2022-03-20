@@ -1,10 +1,10 @@
-{{-- {{dd($popular)}} --}}
+{{-- {{dd($dataPopular)}} --}}
 @foreach ($dataPopular as $popular)
   <div class="col col-12 col-md-6 col-lg-4">
     <div class="progression-studios-video-index-container">
-      <a href="video-post.html">
+      <a href="{{ route('watch', ['id' => $popular['id'], 'media_type' => 'tv']) }}">
         <div class="progression-studios-video-feaured-image"><img
-            src="{{ $apibase }}/w500/{{ $popular['backdrop_path'] }}" alt="Featured Image"></div>
+            src="{{ $apibase }}/w500/{{ $popular['backdrop_path'] }}" alt="Imagen no disponible"></div>
 
         <div class="progression-video-index-content">
           <div class="progression-video-index-table">

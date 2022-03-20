@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\WatchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
+
 Route::get('/home/{page?}', [HomeController::class, 'index'])->name('home')->middleware('auth');
+
+Route::get('/watch/{media_type}/{id}', [WatchController::class, 'index'])->name('watch')->middleware('auth');

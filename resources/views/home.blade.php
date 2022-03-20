@@ -16,7 +16,11 @@
 
                   <div class="progression-studios-slider-caption-width">
                     <div class="progression-studios-slider-caption-align">
-                      <h2><a href="video-post.html">{{ $week['title'] ?? $week['name'] }}</a></h2>
+                      <h2>
+                        <a href="{{ route('watch', ['id' => $week['id'], 'media_type' => $week['media_type']]) }}">
+                          {{ $week['title'] ?? $week['name'] }}
+                        </a>
+                      </h2>
                       <ul class="slider-video-post-meta-list">
                         <li class="slider-video-post-meta-cat">
                           <ul>
@@ -58,7 +62,8 @@
                       </ul>
                       <div class="clearfix"></div>
                       <div class="progression-studios-slider-excerpt">{{ $week['overview'] }}</div>
-                      <a class="btn btn-slider-pro afterglow" href="#VideoLightbox-1"><i
+                      <a class="btn btn-slider-pro afterglow"
+                        href="{{ route('watch', ['id' => $week['id'], 'media_type' => $week['media_type']]) }}"><i
                           class="fas fa-play-circle"></i>Ver</a>
 
                     </div><!-- close .progression-studios-slider-caption-align -->
@@ -96,7 +101,7 @@
           @foreach ($dataTrendingDay as $day)
             <div class="item">
               <div class="progression-studios-video-index-container">
-                <a href="video-post.html">
+                <a href="{{ route('watch', ['id' => $day['id'], 'media_type' => $day['media_type']]) }}">
                   <div class="progression-studios-video-feaured-image"><img
                       src="{{ $apibase }}/w500/{{ $day['backdrop_path'] }}" alt="Featured Image"></div>
 

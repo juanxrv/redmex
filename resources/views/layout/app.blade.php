@@ -7,6 +7,8 @@
 
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css" />
   <link rel="stylesheet"
     href="//fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
 
@@ -28,7 +30,7 @@
         <nav id="site-navigation-pro">
           <ul class="sf-menu">
             <li class="normal-item-pro current-menu-item">
-              <a href="home.html"><i class="fas fa-home"></i>Inicio</a>
+              <a href="{{ route('home') }}"><i class="fas fa-home"></i>Inicio</a>
             </li>
             <li class="normal-item-pro">
               <a href="tv-series.html"><i class="fas fa-tv"></i>Series</a>
@@ -242,9 +244,9 @@
   <script src="{{ asset('js/navigation.js') }}" defer></script><!-- Header Navigation JS Plugin -->
   <script src="{{ asset('js/jquery.flexslider-min.js') }}" defer></script><!-- FlexSlider JS Plugin -->
   <script src="{{ asset('js/jquery-asRange.min.js') }}" defer></script><!-- Range Slider JS Plugin -->
-  <script src="{{ asset('js/afterglow.min.js') }}" defer></script><!-- Video Player JS Plugin -->
   <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script><!-- Carousel JS Plugin -->
   <script src="{{ asset('js/scripts.js') }}" defer></script><!-- Custom Document Ready JS -->
+  <script src="{{ asset('js/app.js') }}" defer></script><!-- Juan -->
 
 
 </body>
