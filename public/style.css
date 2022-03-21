@@ -294,6 +294,7 @@ img {
 =============================================== 05. HEADER STYLES ===============================================
 */
 #progression-studios-header-shadow {
+  pointer-events: none;
   display: block;
   height: 80px;
   width: 100%;
@@ -1880,17 +1881,21 @@ ul.sidebar-reviews-pro .sidebar-comment-exerpt {
 ul.vayvo-progression-video-season-navigation {
   list-style: none;
   margin: 0px 0px 25px 0px;
-  padding: 0px;
+  padding: 5px 0;
   width: 100%;
-  overflow: hidden;
+  overflow-x: scroll;
   border-bottom: 1px solid #212027;
+  display: flex;
+  scrollbar-color: #22b2ee #000;
+  scrollbar-width: thin;
 }
 
 ul.vayvo-progression-video-season-navigation li.progression-video-season-title {
   margin: 0px;
   padding: 0px;
-  float: left;
-  width: 33.32%;
+  /* float: left; */
+  min-width: 150px;
+  border-right: 1px solid grey;
 }
 
 .season-five-six-layout ul.vayvo-progression-video-season-navigation li.progression-video-season-title {

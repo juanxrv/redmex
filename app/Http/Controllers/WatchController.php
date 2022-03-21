@@ -25,7 +25,9 @@ class WatchController extends Controller
     ]);
     $detailData = $detail->json();
     return view('watch', [
-      'data' => $detailData
+      'data' => $detailData,
+      'apibase' => $this->apibase,
+      'media_type' => $media_type
     ]);
   }
 }
