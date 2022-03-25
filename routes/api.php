@@ -15,11 +15,11 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
   Route::put('/user', [UserController::class, 'updateUser']);
   Route::get('/logout', [UserController::class, 'logout']);
 
-  Route::get('/favoritos', [FavoritosController::class, 'index']);
-  Route::post('/favoritos', [FavoritosController::class, 'store']);
+  Route::get('/favs', [FavoritosController::class, 'index']);
+  Route::post('/favs', [FavoritosController::class, 'store']);
 
-  Route::get('/historial', [HistorialController::class, 'index']);
-  Route::post('/historial', [HistorialController::class, 'store']);
+  Route::get('/history', [HistorialController::class, 'index']);
+  Route::post('/history', [HistorialController::class, 'store']);
 });
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
