@@ -5,7 +5,9 @@
   {{-- {{dd($data)}} --}}
   <div id="video-page-title-pro"
     style="background-image:url('{{ $apibase }}/original/{{ $data['backdrop_path'] }}');">
-    <a class="video-page-title-play-button" id="justplay" href="{{$data['videos']['results'] ? '#play' : '#'}}"><i class="fas fa-play"></i></a>
+    @if ($data['videos']['results'])
+      <a class="video-page-title-play-button" id="justplay" href="#play"><i class="fas fa-play"></i></a>
+    @endif
 
     <div class="videoplayer-juan" id="play">
       <a href="#" id="close">X</a>

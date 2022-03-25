@@ -24,7 +24,7 @@
     <!-- Remove sticky-header class to remove sticky header -->
     <div class="header-container">
 
-      <a href="home.html" id="logo" class="float-left mt-3 mx-3"><img src="{{ asset('images/chankro.png') }}"
+      <a href="{{ route('landing') }}" id="logo" class="float-left mt-3 mx-3"><img src="{{ asset('images/chankro.png') }}"
           width="50" alt="Logo"></a>
       @if (auth()->check())
         <nav id="site-navigation-pro">
@@ -154,7 +154,7 @@
 
       <ul id="mobile-menu-pro">
         <li>
-          <a href="home.html"><i class="fas fa-home"></i>Inicio</a>
+          <a href="{{ route('home') }}"><i class="fas fa-home"></i>Inicio</a>
         </li>
         <li>
           <a href="tv-series.html"><i class="fas fa-tv"></i>Series</a>
