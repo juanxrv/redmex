@@ -5,12 +5,17 @@
   {{-- {{dd($data)}} --}}
   <div id="video-page-title-pro"
     style="background-image:url('{{ $apibase }}/original/{{ $data['backdrop_path'] }}');">
-    <a class="video-page-title-play-button" id="justplay" href="#play"><i class="fas fa-play"></i></a>
+    <a class="video-page-title-play-button" id="justplay" href="{{$data['videos']['results'] ? '#play' : '#'}}"><i class="fas fa-play"></i></a>
 
     <div class="videoplayer-juan" id="play">
       <a href="#" id="close">X</a>
       <div class="player-container">
-        <div id="playerplay" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"></div>
+        @foreach ($data['videos']['results'] as $video)
+          @if ($video['type'] == 'Trailer' || $video['type'] == 'Teaser')
+            {{-- bTqVqk7FSmY --}}
+            <div id="playerplay" data-plyr-provider="youtube" data-plyr-embed-id="{{$video['key']}}"></div>
+          @endif
+        @endforeach
       </div>
     </div>
 

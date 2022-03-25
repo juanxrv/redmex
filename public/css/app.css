@@ -11,7 +11,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.85);
   z-index: 9999;
-  padding: 0 100px 0px 100px;
+  padding: 0 5%;
   transition: all 300ms;
   display: flex;
   align-items: center;
@@ -78,3 +78,4 @@
   -webkit-animation: smooth 2000ms ease-in-out 50ms;
           animation: smooth 2000ms ease-in-out 50ms;
 }
+
