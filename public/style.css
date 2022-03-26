@@ -3321,7 +3321,7 @@ header#masthead-pro #mobile-navigation-pro {
   border-top: 1px solid rgba(0, 0, 0, 0.07);
 }
 #mobile-navigation-pro {
-  display: block;
+  display: none;
   line-height: 1;
   position: absolute;
   width: 100%;

@@ -6,23 +6,17 @@ use Illuminate\View\Component;
 
 class Related extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+  public $similar;
+  public $apibase;
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
-    public function render()
-    {
-        return view('components.related');
-    }
+  public function __construct($similar, $apibase)
+  {
+    $this->similar = array_slice($similar['results'], 0, 4);
+    $this->apibase = $apibase;
+  }
+
+  public function render()
+  {
+    return view('components.related');
+  }
 }

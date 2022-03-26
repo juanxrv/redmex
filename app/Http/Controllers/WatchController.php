@@ -22,7 +22,7 @@ class WatchController extends Controller
     $detail = Http::get($this->apiuri . '/' . $media_type . '/' . $id, [
       'api_key' => $this->apikey,
       'language' => 'es',
-      'append_to_response' => 'videos'
+      'append_to_response' => 'videos,similar'
     ]);
     $detailData = $detail->json();
     return view('watch', [

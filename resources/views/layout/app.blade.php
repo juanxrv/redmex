@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -24,8 +24,8 @@
     <!-- Remove sticky-header class to remove sticky header -->
     <div class="header-container">
 
-      <a href="{{ route('landing') }}" id="logo" class="float-left mt-3 mx-3"><img src="{{ asset('images/chankro.png') }}"
-          width="50" alt="Logo"></a>
+      <a href="{{ route('landing') }}" id="logo" class="float-left mt-3 mx-3"><img
+          src="{{ asset('images/chankro.png') }}" width="50" alt="Logo"></a>
       @if (auth()->check())
         <nav id="site-navigation-pro">
           <ul class="sf-menu">
@@ -34,19 +34,6 @@
             </li>
             <li class="normal-item-pro">
               <a href="tv-series.html"><i class="fas fa-tv"></i>Series</a>
-              <!-- Sub-Menu Example >
-       <ul class="sub-menu">
-        <li class="normal-item-pro">
-         <a href="#!">Sub-menu item 1</a>
-        </li>
-        <li class="normal-item-pro">
-         <a href="#!">Sub-menu item 2</a>
-        </li>
-        <li class="normal-item-pro">
-         <a href="#!">Sub-menu item 3</a>
-        </li>
-       </ul>
-       < End Sub-Menu example -->
             </li>
             <li class="normal-item-pro">
               <a href="movies.html"><i class="fas fa-film"></i>Películas</a>
@@ -62,7 +49,7 @@
 
         <div id="header-user-profile">
           <div id="header-user-profile-click" class="noselect">
-            <img src="http://via.placeholder.com/80x80" alt="Suzie">
+            <img src="http://via.placeholder.com/80x80" alt="{{ auth()->user()->name }}">
             <div id="header-username">{{ auth()->user()->name }}</div><i class="fas fa-angle-down"></i>
           </div><!-- close #header-user-profile-click -->
           <div id="header-user-profile-menu">
@@ -158,19 +145,6 @@
         </li>
         <li>
           <a href="tv-series.html"><i class="fas fa-tv"></i>Series</a>
-          <!-- Sub-Menu Example >
-      <ul class="sub-menu">
-       <li>
-        <a href="#!">Sub-menu item 1</a>
-       </li>
-       <li>
-        <a href="#!">Sub-menu item 2</a>
-       </li>
-       <li>
-        <a href="#!">Sub-menu item 3</a>
-       </li>
-      </ul>
-      < End Sub-Menu example -->
         </li>
         <li>
           <a href="movies.html"><i class="fas fa-film"></i>Películas</a>
@@ -182,20 +156,19 @@
         <input type="text" placeholder="Búscar películas o series" aria-label="Search">
       </div>
 
-      <div id="mobile-bars-icon-pro" class="noselect"><i class="fas fa-bars"></i></div>
-
       <div class="clearfix"></div>
 
 
     </nav>
     <div id="progression-studios-header-shadow"></div>
   @else
+    <div id="mobile-bars-icon-pro" class="noselect"><i class="fas fa-bars"></i></div>
     <div id="header-btn-right">
       <button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal">Inicia sesión</button>
       <button class="btn btn-header-pro ml-2 noselect" data-toggle="modal"
         data-target="#SignoutModal">Regístrate</button>
     </div>
-    <div id="mobile-bars-icon-pro" class="noselect"><i class="fas fa-bars"></i></div>
+    {{-- <div id="mobile-bars-icon-pro" class="noselect"><i class="fas fa-bars"></i></div> --}}
     <div class="clearfix"></div>
     <nav id="mobile-navigation-pro">
       <button class="btn btn-mobile-pro btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal">Inicia
@@ -212,18 +185,16 @@
     <div class="container">
       <div class="row">
         <div class="col-md">
-          <div class="copyright-text-pro">Redmex &copy; Todos los derechos reservados. Desarrollado por <a href="#!">Secta del
+          <div class="copyright-text-pro">Redmex &copy; Todos los derechos reservados. Desarrollado por <a
+              href="#!">Secta del
               Mango</a>.
           </div>
         </div><!-- close .col -->
         <div class="col-md">
           <ul class="social-icons-pro">
-            <li class="facebook-color"><a href="#" target="_blank"><i
-                  class="fab fa-facebook-f"></i></a></li>
-            <li class="twitter-color"><a href="#" target="_blank"><i
-                  class="fab fa-twitter"></i></a></li>
-            <li class="instagram-color"><a href="#" target="_blank"><i
-                  class="fab fa-instagram"></i></a></li>
+            <li class="facebook-color"><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+            <li class="twitter-color"><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li class="instagram-color"><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
             <li class="youtube-color"><a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
             </li>
             <li class="vimeo-color"><a href="http://vimeo.com" target="_blank"><i class="fab fa-vimeo-v"></i></a>
@@ -232,7 +203,7 @@
         </div><!-- close .col -->
       </div><!-- close .row -->
     </div><!-- close .container -->
-    
+
   </footer>
   <!-- Required Framework JavaScript -->
   <script src="{{ asset('js/libs/jquery-3.5.1.min.js') }}"></script><!-- jQuery -->

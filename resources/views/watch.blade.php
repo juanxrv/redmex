@@ -14,7 +14,6 @@
       <div class="player-container">
         @foreach ($data['videos']['results'] as $video)
           @if ($video['type'] == 'Trailer' || $video['type'] == 'Teaser')
-            {{-- bTqVqk7FSmY --}}
             <div id="playerplay" data-plyr-provider="youtube" data-plyr-embed-id="{{$video['key']}}"></div>
           @endif
         @endforeach
@@ -82,7 +81,7 @@
         @if ($media_type == 'tv')
           <x-seasons :data="$data" />
         @else
-          <x-related />
+          <x-related :similar="$data['similar']" :apibase="$apibase" />
         @endif
 
       </div><!-- close #video-post-container -->
