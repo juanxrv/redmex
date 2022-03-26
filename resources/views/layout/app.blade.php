@@ -29,13 +29,13 @@
       @if (auth()->check())
         <nav id="site-navigation-pro">
           <ul class="sf-menu">
-            <li class="normal-item-pro current-menu-item">
+            <li class="normal-item-pro {{ (request()->is('home')) ? 'current-menu-item' : '' }}">
               <a href="{{ route('home') }}"><i class="fas fa-home"></i>Inicio</a>
             </li>
-            <li class="normal-item-pro">
+            <li class="normal-item-pro {{ (request()->is('series')) ? 'current-menu-item' : '' }}">
               <a href="tv-series.html"><i class="fas fa-tv"></i>Series</a>
             </li>
-            <li class="normal-item-pro">
+            <li class="normal-item-pro {{ (request()->is('movies')) ? 'current-menu-item' : '' }}">
               <a href="movies.html"><i class="fas fa-film"></i>Películas</a>
             </li>
           </ul>

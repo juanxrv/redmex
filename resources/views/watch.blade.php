@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title', 'Ver')
+@section('title', $data['title'] ?? $data['name'])
 
 @section('content')
   {{-- {{dd($data)}} --}}
