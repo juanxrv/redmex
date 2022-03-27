@@ -30,4 +30,4 @@ Route::get('/home/{page?}', [HomeController::class, 'index'])->name('home')->mid
 
 Route::get('/watch/{media_type}/{id}', [WatchController::class, 'index'])->name('watch')->middleware('auth');
 
-Route::get('/search/{query?}', [SearchController::class, 'index'])->middleware('auth');
+Route::get('/search', [SearchController::class, 'index'])->name('search')->middleware('auth');

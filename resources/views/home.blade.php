@@ -103,8 +103,11 @@
               <div class="progression-studios-video-index-container">
                 <a href="{{ route('watch', ['id' => $day['id'], 'media_type' => $day['media_type']]) }}">
                   <div class="progression-studios-video-feaured-image"><img
-                      src="{{ $apibase }}/w500/{{ $day['backdrop_path'] }}" alt="Featured Image"></div>
-
+                    @if ($day['backdrop_path'])
+                      src="{{ $apibase }}/w780/{{ $day['backdrop_path'] }}" alt="Featured Image"></div>
+                    @else
+                      src="{{ asset('images/not_found.svg') }}" style="max-height: 330px" alt="Imagen no encontrada"></div>
+                    @endif
                   <div class="progression-video-index-content">
                     <div class="progression-video-index-table">
                       <div class="progression-video-index-vertical-align">

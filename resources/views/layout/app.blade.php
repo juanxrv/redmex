@@ -29,13 +29,13 @@
       @if (auth()->check())
         <nav id="site-navigation-pro">
           <ul class="sf-menu">
-            <li class="normal-item-pro {{ (request()->is('home')) ? 'current-menu-item' : '' }}">
+            <li class="normal-item-pro {{ request()->is('home') ? 'current-menu-item' : '' }}">
               <a href="{{ route('home') }}"><i class="fas fa-home"></i>Inicio</a>
             </li>
-            <li class="normal-item-pro {{ (request()->is('series')) ? 'current-menu-item' : '' }}">
+            <li class="normal-item-pro {{ request()->is('series') ? 'current-menu-item' : '' }}">
               <a href="tv-series.html"><i class="fas fa-tv"></i>Series</a>
             </li>
-            <li class="normal-item-pro {{ (request()->is('movies')) ? 'current-menu-item' : '' }}">
+            <li class="normal-item-pro {{ request()->is('movies') ? 'current-menu-item' : '' }}">
               <a href="movies.html"><i class="fas fa-film"></i>Películas</a>
             </li>
           </ul>
@@ -71,59 +71,12 @@
         <div id="video-search-header">
           <div class="container">
 
-            <input type="text" placeholder="Búscar películas o series" aria-label="Search" id="main-text-field">
-
+            
             <div id="video-search-header-filtering">
-              <form id="video-search-header-filtering-padding">
-                <div class="row">
-                  <div class="col-sm extra-padding">
-                    <div class="dotted-dividers-pro">
-                      <h5>Tipo:</h5>
-                      <ul class="video-search-type-list">
-                        <li>
-                          <label class="checkbox-pro-container">Películas
-                            <input type="checkbox" checked="checked" id="movies-type">
-                            <span class="checkmark-pro"></span>
-                          </label>
-
-                          <label class="checkbox-pro-container">Series
-                            <input type="checkbox" id="tv-type">
-                            <span class="checkmark-pro"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="checkbox-pro-container">Estrenos
-                            <input type="checkbox" id="movie-type">
-                            <span class="checkmark-pro"></span>
-                          </label>
-                        </li>
-                      </ul>
-                      <div class="clearfix"></div>
-
-                    </div><!-- close .dotted-dividers-pro -->
-                  </div><!-- close .col -->
-                  <div class="col-sm extra-padding">
-                    <div class="dotted-dividers-pro">
-                      <h5>Géneros:</h5>
-                      <select class="custom-select">
-                        <option selected>Todos</option>
-                        <option value="1">Acción</option>
-                        <option value="2">Aventura</option>
-                        <option value="3">Drama</option>
-                        <option value="4">Animación</option>
-                        <option value="5">Documental</option>
-                        <option value="6">Drama</option>
-                        <option value="7">Terror</option>
-                        <option value="8">Suspenso</option>
-                        <option value="9">Fantasía</option>
-                        <option value="10">Romántico</option>
-                        <option value="11">Ciencia ficción</option>
-                      </select>
-                    </div><!-- close .dotted-dividers-pro -->
-                  </div><!-- close .col -->
-                </div><!-- close .row -->
+              <form method="GET" action="{{ route('search') }}" id="video-search-header-filtering-padding">
+                <input type="text" placeholder="Búscar películas o series" name="query" aria-label="Search" id="main-text-field">
                 <div id="video-search-header-buttons">
-                  <a href="#!" class="btn">Búscar</a>
+                  <button type="submit" class="btn">Búscar</button>
                   <a href="#!" class="btn reset-btn">Restablecer</a>
                 </div><!-- close #video-search-header-buttons -->
               </form><!-- #video-search-header-filtering-padding -->
@@ -186,8 +139,7 @@
       <div class="row">
         <div class="col-md">
           <div class="copyright-text-pro">Redmex &copy; Todos los derechos reservados. Desarrollado por <a
-              href="#!">Secta del
-              Mango</a>.
+              href="#!">Secta del Mango</a>.
           </div>
         </div><!-- close .col -->
         <div class="col-md">

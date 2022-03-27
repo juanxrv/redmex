@@ -7,14 +7,17 @@
       <div class="col col-12 col-md-6 col-lg-6">
         <div class="progression-studios-video-index-container">
           <a href="{{ route('watch', [$video['id'], 'media_type' => 'movie']) }}">
-            <div class="progression-studios-video-feaured-image"><img src="{{ $apibase }}/original/{{ $video['backdrop_path'] }}"
-                alt="Featured Image"></div>
-
+            <div class="progression-studios-video-feaured-image"><img
+              @if ($video['backdrop_path'])
+                src="{{ $apibase }}/original/{{ $video['backdrop_path'] }}" alt="Featured Image"></div>
+              @else
+                src="{{ asset('images/not_found.svg') }}" style="max-height: 239px" alt="Featured Image"></div>
+              @endif
             <div class="progression-video-index-content">
               <div class="progression-video-index-table">
                 <div class="progression-video-index-vertical-align">
 
-                  <h2 class="progression-video-title">{{$video['title']}}</h2>
+                  <h2 class="progression-video-title">{{ $video['title'] }}</h2>
 
                   <div class="average-rating-video-post">
                     <div class="average-rating-video-empty">
@@ -24,7 +27,7 @@
                         class="dashicons dashicons-star-empty"></span><span
                         class="dashicons dashicons-star-empty"></span>
                     </div>
-                    <div class="average-rating-overflow-width" style="width:{{$video['vote_average']*10}}%;">
+                    <div class="average-rating-overflow-width" style="width:{{ $video['vote_average'] * 10 }}%;">
                       <div class="average-rating-video-filled">
                         <span class="dashicons dashicons-star-filled"></span><span
                           class="dashicons dashicons-star-filled"></span><span

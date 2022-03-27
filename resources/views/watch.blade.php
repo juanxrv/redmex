@@ -4,7 +4,11 @@
 @section('content')
   {{-- {{dd($data)}} --}}
   <div id="video-page-title-pro"
-    style="background-image:url('{{ $apibase }}/original/{{ $data['backdrop_path'] }}');">
+    @if ($data['backdrop_path'])
+      style="background-image:url('{{ $apibase }}/original/{{ $data['backdrop_path'] }}');">
+    @else
+      style="background-image:url('{{ asset('images/not_found.svg') }}');">
+    @endif
     @if ($data['videos']['results'])
       <a class="video-page-title-play-button" id="justplay" href="#play"><i class="fas fa-play"></i></a>
     @endif
@@ -14,7 +18,7 @@
       <div class="player-container">
         @foreach ($data['videos']['results'] as $video)
           @if ($video['type'] == 'Trailer' || $video['type'] == 'Teaser')
-            <div id="playerplay" data-plyr-provider="youtube" data-plyr-embed-id="{{$video['key']}}"></div>
+            <div id="playerplay" data-plyr-provider="youtube" data-plyr-embed-id="{{ $video['key'] }}"></div>
           @endif
         @endforeach
       </div>
@@ -91,22 +95,23 @@
       <div id="video-post-sidebar">
         <div class="content-sidebar-section video-sidebar-section-release-date">
           <h4 class="content-sidebar-sub-header">
-            {{$media_type == 'tv' ? 'Último episodio' : 'Fecha de lanzamiento'}}
+            {{ $media_type == 'tv' ? 'Último episodio' : 'Fecha de lanzamiento' }}
           </h4>
           <div class="content-sidebar-short-description">
-            {{$media_type == 'tv' ? Carbon\Carbon::parse($data['last_air_date'])->diffForHumans() : Carbon\Carbon::parse($data['release_date'])->diffForHumans()}}</div>
+            {{ $media_type == 'tv'? Carbon\Carbon::parse($data['last_air_date'])->diffForHumans(): Carbon\Carbon::parse($data['release_date'])->diffForHumans() }}
+          </div>
         </div><!-- close .content-sidebar-section -->
 
         <div class="content-sidebar-section video-sidebar-section-length">
           <h4 class="content-sidebar-sub-header">
-            {{$media_type == 'tv' ? 'Primer episodio' : 'Duración'}}
+            {{ $media_type == 'tv' ? 'Primer episodio' : 'Duración' }}
           </h4>
           <div class="content-sidebar-short-description">
-            {{$media_type == 'tv' ? Carbon\Carbon::parse($data['first_air_date'])->diffForHumans() : $data['runtime'].' mins.'}}
+            {{ $media_type == 'tv'? Carbon\Carbon::parse($data['first_air_date'])->diffForHumans(): $data['runtime'] . ' mins.' }}
           </div>
         </div><!-- close .content-sidebar-section -->
 
-        
+
 
         <div class="clearfix"></div>
       </div>
@@ -124,29 +129,29 @@
     const key = 'e09edc4f5402b9fa7f4a5a76a7edf348';
     const container = document.querySelector('.progression-studios-episode-list-main');
     const template = document.querySelector('#episodio').content;
-    const fragment = document.createDocumentFragment();
-
-    function getDataFromApi(selected, replace) {
+    
+    function getDataFromApi(selected) {
       fetch('https://api.themoviedb.org/3/tv/' +
-        params[3] +
-        '/season/' +
-        selected +
-        '?api_key=' + key +
-        '&language=es'
-      )
-      .then(res => res.json())
-      .then(data => {
-        data.episodes.forEach((e) => {
-          template.querySelector('#episodio-img').src = 'https://image.tmdb.org/t/p/w500' + e.still_path;
-          template.querySelector('.progression-episode-list-title').textContent = e.name;
-          template.querySelector('.progression-episode-season-meta-title').textContent = e.season_number;
-          template.querySelector('.progression-episode-list-meta-release-date').textContent = e.air_date;
-          template.querySelector('.progression-episode-list-short-description').textContent = e.overview;
-          let clone = document.importNode(template, true);
-          fragment.appendChild(clone);
+          params[3] +
+          '/season/' +
+          selected +
+          '?api_key=' + key +
+          '&language=es'
+          )
+        .then(res => res.json())
+        .then(data => {
+          const fragment = document.createDocumentFragment();
+          data.episodes.forEach((e) => {
+            template.querySelector('#episodio-img').src = 'https://image.tmdb.org/t/p/w500' + e.still_path;
+            template.querySelector('.progression-episode-list-title').textContent = e.name;
+            template.querySelector('.progression-episode-season-meta-title').textContent = e.season_number;
+            template.querySelector('.progression-episode-list-meta-release-date').textContent = e.air_date;
+            template.querySelector('.progression-episode-list-short-description').textContent = e.overview;
+            const clone = document.importNode(template, true);
+            fragment.appendChild(clone);
+          });
+          container.appendChild(fragment);
         });
-        container.appendChild(fragment);
-      });
     }
     getDataFromApi(1);
 
@@ -162,7 +167,7 @@
 
     document.querySelector('.wishlist-button-pro').addEventListener('click', () => {
       const fav = document.querySelector('#favorito');
-      if(fav.classList.contains('fa-plus-circle')) {
+      if (fav.classList.contains('fa-plus-circle')) {
         fav.classList.replace('fa-plus-circle', 'fa-bookmark')
       } else {
         fav.classList.replace('fa-bookmark', 'fa-plus-circle')

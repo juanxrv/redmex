@@ -67,6 +67,7 @@
   const container = document.querySelector('.progression-studios-episode-list-main');
   const template = document.querySelector('#episodio').content;
   const fragment = document.createDocumentFragment();
+  let imgSrc;
 
   function getDataFromApi(selected, replace) {
     fetch('https://api.themoviedb.org/3/tv/' +
@@ -79,7 +80,8 @@
     .then(res => res.json())
     .then(data => {
       data.episodes.forEach((e) => {
-        template.querySelector('#episodio-img').src = 'https://image.tmdb.org/t/p/w500' + e.still_path;
+        if(e.still_path) imgSrc = 'https://image.tmdb.org/t/p/w500' + e.still_path; else imgSrc = "{{ asset('images/not_found.svg') }}";
+        const img = template.querySelector('#episodio-img'); img.src = imgSrc; img.style.maxHeight = '231px';
         template.querySelector('.progression-episode-list-title').textContent = e.name;
         template.querySelector('.progression-episode-season-meta-title').textContent = e.season_number;
         template.querySelector('.progression-episode-list-meta-release-date').textContent = e.air_date;
