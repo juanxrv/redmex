@@ -22,7 +22,7 @@ class HistorialController extends Controller
       return response()->json([
         'status' => 'error',
         'msg' => 'Este usuario no tiene historial.',
-      ], 404);
+      ]);
     }
   }
 

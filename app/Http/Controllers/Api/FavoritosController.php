@@ -22,7 +22,7 @@ class FavoritosController extends Controller
       return response()->json([
         'status' => 'error',
         'msg' => 'Este usuario no tiene favoritos.',
-      ], 404);
+      ]);
     }
   }
 
