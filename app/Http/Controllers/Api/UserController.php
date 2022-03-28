@@ -60,7 +60,7 @@ class UserController extends Controller
       return response()->json([
         'status' => 'error',
         'msg' => 'El usuario no está registrado.'
-      ], 404);
+      ]);
     }
   }
 
@@ -101,7 +101,7 @@ class UserController extends Controller
       return response()->json([
         'status' => 'error',
         'msg' => 'El usuario no existe.'
-      ], 404);
+      ]);
     }
   }
 
