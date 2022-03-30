@@ -58,7 +58,7 @@
                         </li>
                         <li class="slider-video-post-meta-year">
                           {{ $week['release_date'] ?? $week['first_air_date'] }}</li>
-                        <li class="slider-video-post-meta-rating"><span>{{ $week['adult'] ? 'C' : 'AA' }}</span></li>
+                        {{-- <li class="slider-video-post-meta-rating"><span>{{ $week['adult'] ? 'C' : 'AA' }}</span></li> --}}
                       </ul>
                       <div class="clearfix"></div>
                       <div class="progression-studios-slider-excerpt">{{ $week['overview'] }}</div>
@@ -103,12 +103,10 @@
               <div class="progression-studios-video-index-container">
                 <a href="{{ route('watch', ['id' => $day['id'], 'media_type' => $day['media_type']]) }}">
                   <div class="progression-studios-video-feaured-image"><img
-                    @if ($day['backdrop_path'])
-                      src="{{ $apibase }}/w780/{{ $day['backdrop_path'] }}" alt="Featured Image"></div>
+                      @if ($day['backdrop_path']) src="{{ $apibase }}/w780/{{ $day['backdrop_path'] }}" alt="Featured Image"></div>
                     @else
-                      src="{{ asset('images/not_found.svg') }}" style="max-height: 330px" alt="Imagen no encontrada"></div>
-                    @endif
-                  <div class="progression-video-index-content">
+                      src="{{ asset('images/not_found.svg') }}" style="max-height: 330px" alt="Imagen no encontrada"></div> @endif
+                      <div class="progression-video-index-content">
                     <div class="progression-video-index-table">
                       <div class="progression-video-index-vertical-align">
 
