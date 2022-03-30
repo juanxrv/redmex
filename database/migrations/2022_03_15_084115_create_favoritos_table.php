@@ -17,6 +17,11 @@ return new class extends Migration
       $table->id();
       $table->integer('media_id');
       $table->string('media_type');
+      $table->string('media_name');
+      $table->string('media_overview');
+      $table->string('media_genre');
+      $table->double('media_vote');
+      $table->string('media_img');
       $table->string('cliente_email');
       $table->foreign('cliente_email')
             ->references('email')
