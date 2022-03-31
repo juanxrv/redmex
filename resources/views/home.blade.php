@@ -58,7 +58,9 @@
                         </li>
                         <li class="slider-video-post-meta-year">
                           {{ $week['release_date'] ?? $week['first_air_date'] }}</li>
-                        {{-- <li class="slider-video-post-meta-rating"><span>{{ $week['adult'] ? 'C' : 'AA' }}</span></li> --}}
+                          @isset($week['adult'])
+                            <li class="slider-video-post-meta-rating"><span>{{ $week['adult'] ? 'C' : 'AA' }}</span></li>
+                          @endisset
                       </ul>
                       <div class="clearfix"></div>
                       <div class="progression-studios-slider-excerpt">{{ $week['overview'] }}</div>
@@ -82,7 +84,6 @@
           </div><!-- close .progression-studios-slider-image-background -->
         </li>
       @endforeach
-      {{-- aki iban esas maes @ juan --}}
     </ul>
   </div><!-- close .progression-studios-slider - See /js/script.js file for options -->
 
