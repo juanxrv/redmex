@@ -2,29 +2,24 @@
 @section('title', $data['title'] ?? $data['name'])
 
 @section('content')
-  {{-- {{dd($data)}} --}}
+  {{-- {{ dd($data) }} --}}
   <div id="video-page-title-pro"
-    @if ($data['backdrop_path'])
-      style="background-image:url('{{ $apibase }}/original/{{ $data['backdrop_path'] }}');">
+    @if ($data['backdrop_path']) style="background-image:url('{{ $apibase }}/original/{{ $data['backdrop_path'] }}');">
     @else
-      style="background-image:url('{{ asset('images/not_found.svg') }}');">
-    @endif
-    @if ($data['videos']['results'])
-      <a class="video-page-title-play-button" id="justplay" href="#play"><i class="fas fa-play"></i></a>
-    @endif
-
+      style="background-image:url('{{ asset('images/not_found.svg') }}');"> @endif
+    @if ($data['videos']['results']) <a class="video-page-title-play-button" id="justplay" href="#play"><i class="fas fa-play"></i></a> @endif
     <div class="videoplayer-juan" id="play">
-      <a href="#" id="close">X</a>
-      <div class="player-container">
-        @foreach ($data['videos']['results'] as $video)
-          @if ($video['type'] == 'Trailer' || $video['type'] == 'Teaser')
-            <div id="playerplay" data-plyr-provider="youtube" data-plyr-embed-id="{{ $video['key'] }}"></div>
-          @endif
-        @endforeach
-      </div>
+    <a href="#" id="close">X</a>
+    <div class="player-container">
+      @foreach ($data['videos']['results'] as $video)
+        @if ($video['type'] == 'Trailer' || $video['type'] == 'Teaser')
+          <div id="playerplay" data-plyr-provider="youtube" data-plyr-embed-id="{{ $video['key'] }}"></div>
+        @endif
+      @endforeach
     </div>
+  </div>
 
-    <div id="video-page-title-gradient-base"></div>
+  <div id="video-page-title-gradient-base"></div>
   </div><!-- close #video-page-title-pro -->
 
 
@@ -72,7 +67,7 @@
           {{-- <a href="#play" class="afterglow" id="video-post-play-text-btn"><i
               class="fas fa-play"></i>Reproducir</a> --}}
 
-          <a href="#!" class="wishlist-button-pro"><i id="favorito" class="fas fa-plus-circle"></i>Favorito</a>
+          <a href="#!" class="wishlist-button-pro btn"><i id="favorito" class="fas fa-plus-circle"></i>Favorito</a>
           {{-- <div id="video-social-sharing-button" class="btn"><i class="fas fa-share"></i>Compartir</div> --}}
           <div class="clearfix"></div>
         </div><!-- close #video-post-buttons-container -->
@@ -125,13 +120,45 @@
 
   </div><!-- close #content-pro -->
   <script>
-    document.querySelector('.wishlist-button-pro').addEventListener('click', () => {
     const fav = document.querySelector('#favorito');
-    if (fav.classList.contains('fa-plus-circle')) {
-      fav.classList.replace('fa-plus-circle', 'fa-bookmark')
-    } else {
-      fav.classList.replace('fa-bookmark', 'fa-plus-circle')
-    }
-  });
+    const token = '{{ session('token') }}';
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    };
+    const data = {
+      media_id: {{ $data['id'] }},
+      media_type: "{{ $media_type }}",
+      media_name: "{{ $data['title'] ?? $data['name'] }}",
+      media_overview: "{{ $data['overview'] }}",
+      media_genre: "{{ $data['genres'][0]['name'] }}",
+      media_vote: "{{ $data['vote_average'] }}",
+      media_img: "{{ $apibase }}/original/{{ $data['backdrop_path'] }}"
+    };
+    document.querySelector('.wishlist-button-pro').addEventListener('click', () => {
+      if (fav.classList.contains('fa-plus-circle')) {
+        fav.classList.replace('fa-plus-circle', 'fa-bookmark');
+        fetch('/api/favs', {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(data)
+          })
+          .then(res => res.json())
+          .then(data => console.log(data));
+      } else {
+        fav.classList.replace('fa-bookmark', 'fa-plus-circle');
+      }
+    });
+
+    fetch('/api/favs', {
+      headers
+    })
+    .then(res => res.json())
+    .then(favs => favs.data.forEach(e => {
+      if(e.media_id == {{$data['id']}}) {
+        fav.classList.replace('fa-plus-circle', 'fa-bookmark');
+      }
+    }));
   </script>
 @endsection

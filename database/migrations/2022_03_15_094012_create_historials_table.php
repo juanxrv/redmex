@@ -18,7 +18,7 @@ return new class extends Migration
       $table->integer('media_id');
       $table->string('media_type');
       $table->string('media_name');
-      $table->string('media_overview');
+      $table->text('media_overview');
       $table->string('media_genre');
       $table->double('media_vote');
       $table->string('media_img');
