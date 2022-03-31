@@ -125,53 +125,13 @@
 
   </div><!-- close #content-pro -->
   <script>
-    const params = window.location.pathname.split('/');
-    const key = 'e09edc4f5402b9fa7f4a5a76a7edf348';
-    const container = document.querySelector('.progression-studios-episode-list-main');
-    const template = document.querySelector('#episodio').content;
-    
-    function getDataFromApi(selected) {
-      fetch('https://api.themoviedb.org/3/tv/' +
-          params[3] +
-          '/season/' +
-          selected +
-          '?api_key=' + key +
-          '&language=es'
-          )
-        .then(res => res.json())
-        .then(data => {
-          const fragment = document.createDocumentFragment();
-          data.episodes.forEach((e) => {
-            template.querySelector('#episodio-img').src = 'https://image.tmdb.org/t/p/w500' + e.still_path;
-            template.querySelector('.progression-episode-list-title').textContent = e.name;
-            template.querySelector('.progression-episode-season-meta-title').textContent = e.season_number;
-            template.querySelector('.progression-episode-list-meta-release-date').textContent = e.air_date;
-            template.querySelector('.progression-episode-list-short-description').textContent = e.overview;
-            const clone = document.importNode(template, true);
-            fragment.appendChild(clone);
-          });
-          container.appendChild(fragment);
-        });
-    }
-    getDataFromApi(1);
-
-    document.querySelector('.vayvo-progression-video-season-navigation').addEventListener('click', (e) => {
-      if (e.target.dataset.seasonId) {
-        document.querySelectorAll('.progression-video-season-title').forEach(e => e.classList.remove('current'));
-        e.target.parentElement.classList.add('current');
-        selected = e.target.dataset.seasonId;
-        container.innerHTML = '';
-        getDataFromApi(selected);
-      }
-    });
-
     document.querySelector('.wishlist-button-pro').addEventListener('click', () => {
-      const fav = document.querySelector('#favorito');
-      if (fav.classList.contains('fa-plus-circle')) {
-        fav.classList.replace('fa-plus-circle', 'fa-bookmark')
-      } else {
-        fav.classList.replace('fa-bookmark', 'fa-plus-circle')
-      }
-    });
+    const fav = document.querySelector('#favorito');
+    if (fav.classList.contains('fa-plus-circle')) {
+      fav.classList.replace('fa-plus-circle', 'fa-bookmark')
+    } else {
+      fav.classList.replace('fa-bookmark', 'fa-plus-circle')
+    }
+  });
   </script>
 @endsection

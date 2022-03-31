@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 
 class LoginController extends Controller
 {
@@ -14,6 +16,9 @@ class LoginController extends Controller
         'status' => 'El correo o contraseña ingresados son incorrectos'
       ]);
     }
+    $user = User::where('email', $request->email)->first();
+    $token = $user->createToken('auth_token')->plainTextToken;
+    Session(['token' => $token]);
     return redirect()->route('home');
   }
 

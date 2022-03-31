@@ -63,36 +63,39 @@
 
 <script>
   const params = window.location.pathname.split('/');
-  const key = 'e09edc4f5402b9fa7f4a5a76a7edf348';
   const container = document.querySelector('.progression-studios-episode-list-main');
   const template = document.querySelector('#episodio').content;
   const fragment = document.createDocumentFragment();
+  const imgbase = 'https://image.tmdb.org/t/p/w500';
+  const token = '{{ session('token') }}';
   let imgSrc;
 
-  function getDataFromApi(selected, replace) {
-    fetch('https://api.themoviedb.org/3/tv/' +
-      params[3] +
-      '/season/' +
-      selected +
-      '?api_key=' + key +
-      '&language=es'
-    )
-    .then(res => res.json())
-    .then(data => {
-      data.episodes.forEach((e) => {
-        if(e.still_path) imgSrc = 'https://image.tmdb.org/t/p/w500' + e.still_path; else imgSrc = "{{ asset('images/not_found.svg') }}";
-        const img = template.querySelector('#episodio-img'); img.src = imgSrc; img.style.maxHeight = '231px';
-        template.querySelector('.progression-episode-list-title').textContent = e.name;
-        template.querySelector('.progression-episode-season-meta-title').textContent = e.season_number;
-        template.querySelector('.progression-episode-list-meta-release-date').textContent = e.air_date;
-        template.querySelector('.progression-episode-list-short-description').textContent = e.overview;
-        let clone = document.importNode(template, true);
-        fragment.appendChild(clone);
+  function getEpisodes(selected) {
+    const headers = {
+      'Authorization': `Bearer ${token}`
+    };
+    fetch('/api/episodes?id=' + params[3] + '&season=' + selected, {
+        headers
+      })
+      .then(res => res.json())
+      .then(data => {
+        data.episodes.forEach((e) => {
+          if (e.still_path) imgSrc = imgbase + e.still_path;
+          else imgSrc = "{{ asset('images/not_found.svg') }}";
+          const img = template.querySelector('#episodio-img');
+          img.src = imgSrc;
+          img.style.maxHeight = '231px';
+          template.querySelector('.progression-episode-list-title').textContent = e.name;
+          template.querySelector('.progression-episode-season-meta-title').textContent = e.season_number;
+          template.querySelector('.progression-episode-list-meta-release-date').textContent = e.air_date;
+          template.querySelector('.progression-episode-list-short-description').textContent = e.overview;
+          let clone = document.importNode(template, true);
+          fragment.appendChild(clone);
+        });
+        container.appendChild(fragment);
       });
-      container.appendChild(fragment);
-    });
   }
-  getDataFromApi(1);
+  getEpisodes(1);
 
   document.querySelector('.vayvo-progression-video-season-navigation').addEventListener('click', (e) => {
     if (e.target.dataset.seasonId) {
@@ -100,16 +103,7 @@
       e.target.parentElement.classList.add('current');
       selected = e.target.dataset.seasonId;
       container.innerHTML = '';
-      getDataFromApi(selected);
-    }
-  });
-
-  document.querySelector('.wishlist-button-pro').addEventListener('click', () => {
-    const fav = document.querySelector('#favorito');
-    if(fav.classList.contains('fa-plus-circle')) {
-      fav.classList.replace('fa-plus-circle', 'fa-bookmark')
-    } else {
-      fav.classList.replace('fa-bookmark', 'fa-plus-circle')
+      getEpisodes(selected);
     }
   });
 </script>

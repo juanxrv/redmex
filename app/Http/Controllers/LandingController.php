@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Http;
 
 class LandingController extends Controller
 {
-
   private $apiuri;
   private $apibase;
   private $apikey;
@@ -29,10 +28,9 @@ class LandingController extends Controller
         'api_key' => $this->apikey,
         'language' => 'es',
         'page' => $page
-      ]);
-    $data = $trending->json();
+      ])->json();
     return view('landing', [
-      'data' => $data,
+      'data' => $trending,
       'apibase' => $this->apibase,
       'page' => $page
     ]);

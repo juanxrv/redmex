@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\EpisodesController;
 use App\Http\Controllers\Api\FavoritosController;
 use App\Http\Controllers\Api\HistorialController;
 use App\Http\Controllers\Api\UserController;
@@ -20,6 +21,8 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
   Route::get('/history', [HistorialController::class, 'index']);
   Route::post('/history', [HistorialController::class, 'store']);
+
+  Route::get('/episodes', [EpisodesController::class, 'index']);
 });
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
