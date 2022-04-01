@@ -33,10 +33,10 @@
               <a href="{{ route('home') }}"><i class="fas fa-home"></i>Inicio</a>
             </li>
             <li class="normal-item-pro {{ request()->is('series') ? 'current-menu-item' : '' }}">
-              <a href="tv-series.html"><i class="fas fa-tv"></i>Series</a>
+              <a href="{{ route('series') }}"><i class="fas fa-tv"></i>Series</a>
             </li>
             <li class="normal-item-pro {{ request()->is('movies') ? 'current-menu-item' : '' }}">
-              <a href="movies.html"><i class="fas fa-film"></i>Películas</a>
+              <a href="{{ route('movies') }}"><i class="fas fa-film"></i>Películas</a>
             </li>
           </ul>
         </nav>
@@ -98,10 +98,10 @@
           <a href="{{ route('home') }}"><i class="fas fa-home"></i>Inicio</a>
         </li>
         <li>
-          <a href="tv-series.html"><i class="fas fa-tv"></i>Series</a>
+          <a href="{{ route('series') }}"><i class="fas fa-tv"></i>Series</a>
         </li>
         <li>
-          <a href="movies.html"><i class="fas fa-film"></i>Películas</a>
+          <a href="{{ route('movies') }}"><i class="fas fa-film"></i>Películas</a>
         </li>
 
       </ul>
