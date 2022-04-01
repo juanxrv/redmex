@@ -29,6 +29,8 @@ class SignupController extends Controller
       'created_at' => date('c')
     ]);
     $user->save();
+    $token = $user->createToken('auth_token')->plainTextToken;
+    Session(['token' => $token]);
     auth()->login($user);
     return redirect('home');
   }

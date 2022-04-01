@@ -58,7 +58,7 @@
               <li><a href="#!"><i class="fa fa-cogs"></i>Editar perfil</a></li>
               <li><a href="profile.html"><i class="fa fa-list-ul"></i>Favoritos</a></li>
               <li><a href="membership-plan.html"><i class="fa fa-credit-card"></i>Suscripción</a></li>
-              <li><a href="{{ route('logout') }}"><i class="fa fa-power-off"></i>Salir</a></li>
+              <li><a id="logout" href="#"><i class="fa fa-power-off"></i>Salir</a></li>
             </ul>
           </div><!-- close #header-user-profile-menu -->
         </div><!-- close #header-user-profile -->
@@ -71,10 +71,11 @@
         <div id="video-search-header">
           <div class="container">
 
-            
+
             <div id="video-search-header-filtering">
               <form method="GET" action="{{ route('search') }}" id="video-search-header-filtering-padding">
-                <input type="text" placeholder="Búscar películas o series" name="query" aria-label="Search" id="main-text-field">
+                <input type="text" placeholder="Búscar películas o series" name="query" aria-label="Search"
+                  id="main-text-field">
                 <div id="video-search-header-buttons">
                   <button type="submit" class="btn">Búscar</button>
                   <a href="#!" class="btn reset-btn">Restablecer</a>
@@ -172,6 +173,20 @@
   <script src="{{ asset('js/app.js') }}" defer></script><!-- Juan -->
 
 
+  <script>
+    const tk = `{{ session('token') }}`;
+    const logout = document.querySelector('#logout');
+    if (logout) {
+      logout.addEventListener('click', () => {
+        fetch('/api/logout', {
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${tk}`
+          }
+        }).then(() => fetch('/logout').then(() => window.location.href = '/'));
+      });
+    }
+  </script>
 </body>
 
 </html>

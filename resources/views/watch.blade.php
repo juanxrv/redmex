@@ -121,20 +121,20 @@
   </div><!-- close #content-pro -->
   <script>
     const fav = document.querySelector('#favorito');
-    const token = '{{ session('token') }}';
+    const tkn = `{{ session('token') }}`;
     const headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${tkn}`
     };
     const data = {
       media_id: {{ $data['id'] }},
-      media_type: "{{ $media_type }}",
-      media_name: "{{ $data['title'] ?? $data['name'] }}",
-      media_overview: "{{ $data['overview'] }}",
-      media_genre: "{{ $data['genres'][0]['name'] }}",
-      media_vote: "{{ $data['vote_average'] }}",
-      media_img: "{{ $apibase }}/original/{{ $data['backdrop_path'] }}"
+      media_type: `{{ $media_type }}`,
+      media_name: `{{ $data['title'] ?? $data['name'] }}`,
+      media_overview: `{{ $data['overview'] }}`,
+      media_genre: `{{ $data['genres'][0]['name'] }}`,
+      media_vote: {{ $data['vote_average'] }},
+      media_img: `{{ $apibase }}/original/{{ $data['backdrop_path'] }}`
     };
     document.querySelector('.wishlist-button-pro').addEventListener('click', () => {
       if (fav.classList.contains('fa-plus-circle')) {
@@ -148,17 +148,29 @@
           .then(data => console.log(data));
       } else {
         fav.classList.replace('fa-bookmark', 'fa-plus-circle');
+        fetch("/api/favs?media_id={{ $data['id'] }}", {
+          method: 'DELETE',
+          headers
+        });
       }
+      fav.parentElement.classList.add('disabled');
+        setTimeout(() => {
+          fav.parentElement.classList.remove('disabled');
+        }, 1000);
     });
 
     fetch('/api/favs', {
-      headers
-    })
-    .then(res => res.json())
-    .then(favs => favs.data.forEach(e => {
-      if(e.media_id == {{$data['id']}}) {
-        fav.classList.replace('fa-plus-circle', 'fa-bookmark');
-      }
-    }));
+        headers
+      })
+      .then(res => res.json())
+      .then((favs) => {
+        if (typeof favs.data !== 'undefined') {
+          favs.data.forEach(e => {
+            if (e.media_id == {{ $data['id'] }}) {
+              fav.classList.replace('fa-plus-circle', 'fa-bookmark');
+            }
+          });
+        }
+      });
   </script>
 @endsection

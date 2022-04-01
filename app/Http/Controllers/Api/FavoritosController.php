@@ -54,4 +54,14 @@ class FavoritosController extends Controller
       'msg' => 'Favorito agregado al usuario correctamente.',
     ]);
   }
+
+  public function destroy(Request $request)
+  {
+    $fav = Favoritos::where('media_id', $request->media_id);
+    $fav->delete();
+    return response()->json([
+      'status' => 'ok',
+      'msg' => 'Elemento eliminado de Favoritos.'
+    ]);
+  }
 }

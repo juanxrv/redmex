@@ -17,6 +17,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
   Route::get('/logout', [UserController::class, 'logout']);
 
   Route::get('/favs', [FavoritosController::class, 'index']);
+  Route::delete('/favs', [FavoritosController::class, 'destroy']);
   Route::post('/favs', [FavoritosController::class, 'store']);
 
   Route::get('/history', [HistorialController::class, 'index']);
