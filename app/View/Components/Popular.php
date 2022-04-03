@@ -12,14 +12,12 @@ class Popular extends Component
    * @return void
    */
   public $dataPopular;
-  public $apibase;
   public $genres;
   public $page;
 
   public function __construct($data)
   {
     $this->dataPopular = $data['dataPopular'];
-    $this->apibase = $data['apibase'];
     $this->genres = $data['genres'];
     $this->page = $data['page'];
   }

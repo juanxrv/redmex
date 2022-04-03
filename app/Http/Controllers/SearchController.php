@@ -20,14 +20,10 @@ class SearchController extends Controller
 
   public function index(Request $request)
   {
-    $search = Http::get($this->apiuri . '/search/multi', [
-      'api_key' => $this->apikey,
-      'query' => $request->input('query'),
-      'language' => 'es'
-    ])->json();
+    $search = movieDb('/search/multi', 1, '', $request->input('query'));
     return view('search', [
       'data' => $search['results'],
-      'apibase' => $this->apibase
+      'query' => $request->input('query')
     ]);
   }
 }

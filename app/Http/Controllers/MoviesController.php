@@ -8,6 +8,11 @@ class MoviesController extends Controller
 {
   public function index()
   {
-    return view('movies');
+    $movies = movieDb('/movie/popular');
+    $genres = movieDb('/genre/movie/list');
+    return view('movies', [
+      'data' => $movies,
+      'genres' => $genres['genres']
+    ]);
   }
 }

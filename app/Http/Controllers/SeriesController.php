@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class SeriesController extends Controller
 {
   public function index()
   {
-    return view('series');
+    $series = movieDb('/tv/popular');
+    $genres = movieDb('/genre/tv/list');
+    return view('series', [
+      'data' => $series,
+      'apibase' => imgbase(),
+      'genres' => $genres['genres']
+    ]);
   }
 }
