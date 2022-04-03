@@ -8,26 +8,19 @@
       {{-- {{dd($data)}} --}}
       <div style="height: 20px;"></div>
 
-      <ul class="progression-filter-button-group">
-        <li class="pro-selected">Todo</li>
-        <li>Películas</li>
-        <li>Series</li>
-      </ul>
+      <h2 class="post-list-heading">"{{ $query }}"<span>Resultados de la búsqueda</span></h2>
+
 
       <div class="row">
 
-        @foreach ($data as $result)
+        @forelse ($data as $result)
           @if ($result['media_type'] != 'person')
             <div class="col col-12 col-md-6 col-lg-6">
               <div class="progression-studios-video-index-container">
                 <a href="{{ route('watch', [$result['media_type'], $result['id']]) }}">
                   <div class="progression-studios-video-feaured-image"><img
-                      @if ($result['backdrop_path'])
-                        src="{{ $apibase }}/w780/{{ $result['backdrop_path'] }}" alt="Featured Image"></div>
-                      @else
-                        src="{{ asset('images/not_found.svg') }}" style="max-height: 330px" alt="Imagen no encontrada"></div>
-                      @endif
-
+                      src="{{ $result['backdrop_path'] ? mediaImg('w780', $result['backdrop_path']) : asset('images/not_found.svg') }}"
+                      style="max-height: 330px" alt="Featured Image"></div>
                   <div class="progression-video-index-content">
                     <div class="progression-video-index-table">
                       <div class="progression-video-index-vertical-align">
@@ -68,7 +61,10 @@
               </div><!-- close .progression-studios-video-index-container -->
             </div><!-- close .col -->
           @endif
-        @endforeach
+        @empty
+          <div class="progression-studios-video-feaured-image w-50 m-auto"><img style="opacity: 0.2"
+              src="{{ asset('images/not_found.svg') }}" alt="Featured Image"></div>
+        @endforelse
 
       </div><!-- close .row -->
 

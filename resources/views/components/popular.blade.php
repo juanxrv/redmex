@@ -4,12 +4,8 @@
     <div class="progression-studios-video-index-container">
       <a href="{{ route('watch', ['id' => $popular['id'], 'media_type' => 'tv']) }}">
         <div class="progression-studios-video-feaured-image"><img
-          @if ($popular['backdrop_path'])
-            src="{{ $apibase }}/w500/{{ $popular['backdrop_path'] }}" alt="Imagen no disponible"></div>
-          @else
-            src="{{ asset('images/not_found.svg') }}" style="max-height: 217px" alt="Imagen no disponible"></div>
-          @endif
-
+            src="{{ $popular['backdrop_path'] ? mediaImg('w780', $popular['backdrop_path']) : asset('images/not_found.svg') }}"
+            alt="Imagen no disponible" style="max-height: 217px"></div>
         <div class="progression-video-index-content">
           <div class="progression-video-index-table">
             <div class="progression-video-index-vertical-align">

@@ -8,11 +8,8 @@
         <div class="progression-studios-video-index-container">
           <a href="{{ route('watch', [$video['id'], 'media_type' => 'movie']) }}">
             <div class="progression-studios-video-feaured-image"><img
-              @if ($video['backdrop_path'])
-                src="{{ $apibase }}/original/{{ $video['backdrop_path'] }}" alt="Featured Image"></div>
-              @else
-                src="{{ asset('images/not_found.svg') }}" style="max-height: 239px" alt="Featured Image"></div>
-              @endif
+                src="{{ $video['backdrop_path'] ? mediaImg('original', $video['backdrop_path']) : asset('images/not_found.svg') }}"
+                alt="Featured Image" style="max-height: 239px"></div>
             <div class="progression-video-index-content">
               <div class="progression-video-index-table">
                 <div class="progression-video-index-vertical-align">

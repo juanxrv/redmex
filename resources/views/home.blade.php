@@ -8,7 +8,7 @@
       @foreach ($dataTrendingWeek as $week)
         <li class="progression_studios_animate_left">
           <div class="progression-studios-slider-image-background"
-            style="background-image:url({{ $apibase }}/original/{{ $week['backdrop_path'] }});">
+            style="background-image:url({{ mediaImg('original', $week['backdrop_path']) }});">
             <div class="progression-studios-slider-display-table">
               <div class="progression-studios-slider-vertical-align">
 
@@ -58,9 +58,9 @@
                         </li>
                         <li class="slider-video-post-meta-year">
                           {{ $week['release_date'] ?? $week['first_air_date'] }}</li>
-                          @isset($week['adult'])
-                            <li class="slider-video-post-meta-rating"><span>{{ $week['adult'] ? 'C' : 'AA' }}</span></li>
-                          @endisset
+                        @isset($week['adult'])
+                          <li class="slider-video-post-meta-rating"><span>{{ $week['adult'] ? 'C' : 'AA' }}</span></li>
+                        @endisset
                       </ul>
                       <div class="clearfix"></div>
                       <div class="progression-studios-slider-excerpt">{{ $week['overview'] }}</div>
@@ -79,7 +79,7 @@
             <div class="progression-studios-slider-overlay-gradient"></div>
 
             <div class="progression-studios-skrn-slider-upside-down"
-              style="background-image:url({{ $apibase }}/original/{{ $week['backdrop_path'] }});"></div>
+              style="background-image:url({{ mediaImg('original', $week['backdrop_path']) }});"></div>
 
           </div><!-- close .progression-studios-slider-image-background -->
         </li>
@@ -104,10 +104,9 @@
               <div class="progression-studios-video-index-container">
                 <a href="{{ route('watch', ['id' => $day['id'], 'media_type' => $day['media_type']]) }}">
                   <div class="progression-studios-video-feaured-image"><img
-                      @if ($day['backdrop_path']) src="{{ $apibase }}/w780/{{ $day['backdrop_path'] }}" alt="Featured Image"></div>
-                    @else
-                      src="{{ asset('images/not_found.svg') }}" style="max-height: 330px" alt="Imagen no encontrada"></div> @endif
-                      <div class="progression-video-index-content">
+                      src="{{ $day['backdrop_path'] ? mediaImg('w780', $day['backdrop_path']) : asset('images/not_found.svg') }}"
+                      style="max-height: 330px" alt="Imagen no disponible."></div>
+                  <div class="progression-video-index-content">
                     <div class="progression-video-index-table">
                       <div class="progression-video-index-vertical-align">
 
@@ -155,8 +154,6 @@
             </div><!-- close .item -->
           @endforeach
 
-          {{-- aki iban los item vea @ juan --}}
-
         </div><!-- close #progression-video-carousel - See /js/script.js file for options -->
       </div><!-- close .progression-studios-elementor-carousel-container  -->
 
@@ -168,7 +165,7 @@
 
       <div class="row">
 
-        <x-popular :data="['dataPopular' => $dataPopular, 'apibase' => $apibase, 'genres' => $genres, 'page' => $page]" />
+        <x-popular :data="['dataPopular' => $dataPopular, 'genres' => $genres, 'page' => $page]" />
         <div id="popular"></div>
 
         <div class="clearfix"></div>

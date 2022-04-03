@@ -12,8 +12,8 @@
       </div><!-- close .container -->
     </div><!-- close #progression-studios-page-title-container -->
     <div class="clearfix"></div>
-    {{-- http://via.placeholder.com/1600x600 --}}
-    <div id="page-title-overlay-image" style="background-image:url({{ $apibase }}/original/{{$data['results'][0]['backdrop_path']}});"></div>
+    <div id="page-title-overlay-image"
+      style="background-image:url({{ mediaImg('original', $data['results'][0]['backdrop_path']) }});"></div>
   </div>
 
 
