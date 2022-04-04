@@ -56,7 +56,8 @@
                     </ul>
                     <div class="clearfix"></div>
                     <div class="progression-studios-slider-excerpt">{{ $data['results'][0]['overview'] }}</div>
-                    <a class="btn btn-slider-pro afterglow" href="#VideoLightbox-1"><i
+                    <a class="btn btn-slider-pro afterglow"
+                      href="{{ route('watch', ['id' => $data['results'][0]['id'], 'media_type' => 'movie']) }}"><i
                         class="fas fa-play-circle"></i>Ver</a>
 
                   </div><!-- close .progression-studios-slider-caption-align -->

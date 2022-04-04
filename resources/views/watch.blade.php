@@ -4,22 +4,22 @@
 @section('content')
   {{-- {{ dd($data) }} --}}
   <div id="video-page-title-pro"
-    @if ($data['backdrop_path']) style="background-image:url('{{ $apibase }}/original/{{ $data['backdrop_path'] }}');">
-    @else
-      style="background-image:url('{{ asset('images/not_found.svg') }}');"> @endif
-    @if ($data['videos']['results']) <a class="video-page-title-play-button" id="justplay" href="#play"><i class="fas fa-play"></i></a> @endif
+    style="background-image:url('{{ $data['backdrop_path'] ? mediaImg('original', $data['backdrop_path']) : asset('images/not_found.svg') }}');">
+    @if ($data['videos']['results'])
+      <a class="video-page-title-play-button" id="justplay" href="#play"><i class="fas fa-play"></i></a>
+    @endif
     <div class="videoplayer-juan" id="play">
-    <a href="#" id="close">X</a>
-    <div class="player-container">
-      @foreach ($data['videos']['results'] as $video)
-        @if ($video['type'] == 'Trailer' || $video['type'] == 'Teaser')
-          <div id="playerplay" data-plyr-provider="youtube" data-plyr-embed-id="{{ $video['key'] }}"></div>
-        @endif
-      @endforeach
+      <a href="#" id="close">X</a>
+      <div class="player-container">
+        @foreach ($data['videos']['results'] as $video)
+          @if ($video['type'] == 'Trailer' || $video['type'] == 'Teaser')
+            <div id="playerplay" data-plyr-provider="youtube" data-plyr-embed-id="{{ $video['key'] }}"></div>
+          @endif
+        @endforeach
+      </div>
     </div>
-  </div>
 
-  <div id="video-page-title-gradient-base"></div>
+    <div id="video-page-title-gradient-base"></div>
   </div><!-- close #video-page-title-pro -->
 
 
@@ -80,12 +80,10 @@
         @if ($media_type == 'tv')
           <x-seasons :data="$data" />
         @else
-          <x-related :similar="$data['similar']" :apibase="$apibase" />
+          <x-related :similar="$data['similar']" />
         @endif
 
       </div><!-- close #video-post-container -->
-
-
 
       <div id="video-post-sidebar">
         <div class="content-sidebar-section video-sidebar-section-release-date">
@@ -116,8 +114,6 @@
       <div class="clearfix"></div>
     </div><!-- close .container -->
 
-
-
   </div><!-- close #content-pro -->
   <script>
     const fav = document.querySelector('#favorito');
@@ -134,7 +130,7 @@
       media_overview: `{{ $data['overview'] }}`,
       media_genre: `{{ $data['genres'][0]['name'] }}`,
       media_vote: {{ $data['vote_average'] }},
-      media_img: `{{ $apibase }}/original/{{ $data['backdrop_path'] }}`
+      media_img: `{{ mediaImg('original', $data['backdrop_path']) }}`
     };
     document.querySelector('.wishlist-button-pro').addEventListener('click', () => {
       if (fav.classList.contains('fa-plus-circle')) {
@@ -154,9 +150,9 @@
         });
       }
       fav.parentElement.classList.add('disabled');
-        setTimeout(() => {
-          fav.parentElement.classList.remove('disabled');
-        }, 1000);
+      setTimeout(() => {
+        fav.parentElement.classList.remove('disabled');
+      }, 1000);
     });
 
     fetch('/api/favs', {

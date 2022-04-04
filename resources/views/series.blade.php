@@ -7,7 +7,7 @@
     <ul class="slides">
       <li class="progression_studios_animate_left">
         <div class="progression-studios-slider-image-background"
-          style="background-image:url({{ imgbase() }}/original/{{ $data['results'][0]['backdrop_path'] }});">
+          style="background-image:url({{ mediaImg('original', $data['results'][0]['backdrop_path']) }});">
           <div class="progression-studios-slider-display-table">
             <div class="progression-studios-slider-vertical-align">
 
@@ -56,7 +56,8 @@
                     </ul>
                     <div class="clearfix"></div>
                     <div class="progression-studios-slider-excerpt">{{ $data['results'][0]['overview'] }}</div>
-                    <a class="btn btn-slider-pro afterglow" href="#VideoLightbox-1"><i
+                    <a class="btn btn-slider-pro afterglow"
+                      href="{{ route('watch', ['id' => $data['results'][0]['id'], 'media_type' => 'tv']) }}"><i
                         class="fas fa-play-circle"></i>Ver</a>
 
                   </div><!-- close .progression-studios-slider-caption-align -->
@@ -70,7 +71,7 @@
           <div class="progression-studios-slider-overlay-gradient"></div>
 
           <div class="progression-studios-skrn-slider-upside-down"
-            style="background-image:url({{ $apibase }}/original/{{ $data['results'][0]['backdrop_path'] }});">
+            style="background-image:url({{ mediaImg('original', $data['results'][0]['backdrop_path']) }});">
           </div>
 
 
@@ -96,7 +97,7 @@
             <div class="progression-studios-video-index-container">
               <a href="{{ route('watch', ['media_type' => 'tv', 'id' => $serie['id']]) }}">
                 <div class="progression-studios-video-feaured-image"><img
-                    src="{{ $apibase }}/w780/{{ $serie['backdrop_path'] }}" alt="Imagen no disponible.">
+                    src="{{ mediaImg('w780', $serie['backdrop_path']) }}" alt="Imagen no disponible.">
                 </div>
 
                 <div class="progression-video-index-content">

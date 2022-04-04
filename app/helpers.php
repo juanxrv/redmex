@@ -17,12 +17,6 @@ function movieDb($route, $page = 1, $append = '', $query = '')
   return $data;
 }
 
-function imgbase()
-{
-  $apibase = env('API_BASE');
-  return $apibase;
-}
-
 function mediaImg($size, $img)
 {
   $apibase = env('API_BASE');
