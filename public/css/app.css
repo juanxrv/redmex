@@ -93,3 +93,16 @@
   visibility: hidden;
   transition: all 300ms ease-in-out;
 }
+
+.avatar {
+  height: 30px;
+  width: 30px;
+  background: rgb(145, 86, 156);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 150%;
+  border-radius: 50%;
+  margin-right: 5px;
+  box-shadow: 0 0 10px -5px #000;
+}
