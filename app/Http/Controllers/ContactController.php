@@ -22,7 +22,7 @@ class ContactController extends Controller
       'message' => 'required'
     ]);
     $mail = new ContactMail($message);
-    Mail::to('admin@redmex.tech')->send($mail);
-    return back()->with('status', 'ok');
+    Mail::to('support@redmex.tech')->send($mail);
+    return back()->with(['status' => 'ok']);
   }
 }

@@ -114,4 +114,21 @@
       </div><!-- close .modal-content -->
     </div><!-- close .modal-dialog -->
   </div><!-- close .modal -->
+  @if(session('status'))
+    <div class="status-msg">
+      <div class="d-flex flex-column">
+        <h3 class="text-white-50 text-center m-2">:)</h3>
+        <p class="text-white mb-1 text-center">Correo enviado, espera respuesta en las próximas 24 horas.</p>
+      </div>
+    </div>
+    <script>
+      const status = document.querySelector('.status-msg');
+      status.style.visibility = 'visible';
+      status.style.opacity = '1';
+      setTimeout(() => {
+        status.style.visibility = 'hidden';
+        status.style.opacity = '0';
+      }, 5000);
+    </script>
+  @endif
 @endsection

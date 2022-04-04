@@ -144,15 +144,7 @@
           </div>
         </div><!-- close .col -->
         <div class="col-md">
-          <ul class="social-icons-pro">
-            <li class="facebook-color"><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-            <li class="twitter-color"><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-            <li class="instagram-color"><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-            <li class="youtube-color"><a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-            </li>
-            <li class="vimeo-color"><a href="http://vimeo.com" target="_blank"><i class="fab fa-vimeo-v"></i></a>
-            </li>
-          </ul>
+          <div class="copyright-text-pro text-right"><a href="{{ route('about') }}">¿Quiénes somos?</a></div>
         </div><!-- close .col -->
       </div><!-- close .row -->
     </div><!-- close .container -->
