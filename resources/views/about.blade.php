@@ -128,7 +128,7 @@
     <script>
       const status = document.querySelector('.status-msg');
       status.style.visibility = 'visible';
-      status.style.opacity = '1';
+      status.style.opacity = '0.7';
       setTimeout(() => {
         status.style.visibility = 'hidden';
         status.style.opacity = '0';

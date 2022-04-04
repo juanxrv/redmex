@@ -67,3 +67,17 @@
 .smooth-anim {
   animation: smooth 2000ms ease-in-out 50ms;
 }
+
+.status-msg {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 300px;
+  min-width: 280px;
+  border: 1px solid rgb(118, 235, 107);
+  background: rgb(33, 117, 44);
+  border-radius: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms ease-in-out;
+}
