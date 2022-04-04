@@ -12,9 +12,13 @@ class ContactMail extends Mailable
   use Queueable, SerializesModels;
 
   public $content;
+  public $email;
+  public $name;
 
   public function __construct($content)
   {
+    $this->email = auth()->user()->email;
+    $this->name = auth()->user()->name;
     $this->content = $content;
   }
 

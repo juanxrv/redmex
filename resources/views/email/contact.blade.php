@@ -71,8 +71,8 @@
         </p>
       </div>
       <div class="card-footer">
-        <p class="card-text">Mensaje recibido de <strong>{{ $content['name'] }}</strong> |
-          <a href="mailto:{{ $content['email'] }}">{{ $content['email'] }}</a>
+        <p class="card-text">Mensaje recibido de <strong>{{ $name }}</strong> |
+          <a href="mailto:{{ $email }}">{{ $email }}</a>
         </p>
       </div>
     </div>

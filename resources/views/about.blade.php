@@ -90,16 +90,18 @@
             <form method="POST" action="{{ route('contact') }}">
               @csrf
               <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Nombre" required>
+                {{-- <input type="text" name="name" class="form-control" placeholder="Nombre" required> --}}
               </div>
-              <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Correo" required>
+              <div class="form-group d-flex flex-column align-items-end">
+                <label class="text-muted"><strong>{{ auth()->user()->name }}</strong></label>
+                <label class="text-muted"><strong>{{ auth()->user()->email }}</strong></label>
+                {{-- <input type="email" name="email" class="form-control" placeholder="Correo" required> --}}
               </div>
               <div class="form-group">
                 <input type="text" name="subject" class="form-control" placeholder="Asunto" required>
               </div>
               <div class="form-group">
-                <textarea class="w-100" style="resize: none" name="message" placeholder="Asunto" required></textarea>
+                <textarea class="w-100" style="resize: none" name="message" placeholder="Mensaje" required></textarea>
               </div>
               <div class="form-group aligncenter">
                 <button type="submit" class="btn">Enviar</button>
@@ -114,7 +116,7 @@
       </div><!-- close .modal-content -->
     </div><!-- close .modal-dialog -->
   </div><!-- close .modal -->
-  @if(session('status'))
+  @if (session('status'))
     <div class="status-msg">
       <div class="d-flex flex-column">
         <h3 class="text-white-50 text-center m-2">:)</h3>
