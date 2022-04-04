@@ -27,5 +27,5 @@ Route::get('/movies', [MoviesController::class, 'index'])->name('movies')->middl
 
 Route::get('/search', [SearchController::class, 'index'])->name('search')->middleware('auth');
 
-Route::get('/about', [ContactController::class, 'index'])->name('about');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact')->middleware('auth');
+Route::get('/about', [ContactController::class, 'index'])->name('about')->middleware('auth');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact');

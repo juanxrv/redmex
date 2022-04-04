@@ -15,7 +15,11 @@
 
                 <div class="progression-studios-slider-caption-width">
                   <div class="progression-studios-slider-caption-align">
-                    <h2><a href="video-post.html">{{ $data['results'][0]['name'] }}</a></h2>
+                    <h2>
+                      <a href="{{ route('watch', ['id' => $data['results'][0]['id'], 'media_type' => 'tv']) }}">
+                        {{ $data['results'][0]['name'] }}
+                      </a>
+                    </h2>
                     <ul class="slider-video-post-meta-list">
                       <li class="slider-video-post-meta-cat">
                         <ul>

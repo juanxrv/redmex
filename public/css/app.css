@@ -80,18 +80,3 @@
           animation: smooth 2000ms ease-in-out 50ms;
 }
 
-.status-msg {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  width: 300px;
-  min-width: 280px;
-  border: 1px solid rgb(103, 250, 159);
-  box-shadow: 0 0 50px -20px rgb(103, 250, 159);
-  background: rgb(37, 143, 77);
-  padding: 5px;
-  border-radius: 10px;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 300ms ease-in-out;
-}

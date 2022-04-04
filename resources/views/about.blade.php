@@ -5,10 +5,12 @@
   <div id="page-title-pro" class="blog-post-title">
     <div id="progression-studios-page-title-container">
       <div class="container">
-        <h1 class="page-title">Redmex</h1>
+        <h1 style="text-shadow: 0 0 15px #000" class="page-title">Redmex <img style="width: 10%"
+            src="{{ asset('images/chankro.png') }}" alt="Redmex">
+        </h1>
 
         <ul class="progression-single-post-meta">
-          <li><i class="fas fa-info-circle"></i> Aquí puedes saber un poco más sobre nosotros y contactarnos.</li>
+          <li><i class="fas fa-info-circle"></i> Aquí puedes saber un poco más sobre nosotros y ponerte en contacto.</li>
         </ul>
 
       </div><!-- close .container -->
@@ -34,7 +36,7 @@
                 <h4>Nuestra misión</h4>
                 <p>
                   Ayudara la gente a transformar noches ordinarias en noches de película siendo una fuente
-                  completa en películas, series y mas.
+                  completa en películas, series y más.
                 </p>
               </div><!-- close .progression-studios-blog-excerpt -->
               <div class="progression-studios-blog-excerpt">
