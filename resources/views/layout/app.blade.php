@@ -46,7 +46,7 @@
           </div>
         </div><!-- close .col -->
         <div class="col-12 col-md-6">
-          <div class="copyright-text-pro text-left text-md-right">Desarrollado por <a href="#!">Secta del Mango</a>.
+          <div class="copyright-text-pro text-left text-md-right">Desarrollado por <a href="#delmango">Secta del Mango</a>.
           </div>
         </div>
       </div><!-- close .row -->

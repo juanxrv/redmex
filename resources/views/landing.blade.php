@@ -152,7 +152,7 @@
       </div><!-- close .modal-content -->
     </div><!-- close .modal-dialog -->
   </div><!-- close .modal -->
-  <div class="delmango">
+  <div id="delmango" class="delmango">
     <div class="delmango-container">
       <img src="{{ asset('images/mango.png') }}" alt="Secta del mango">
       <h2>Colaboradores</h2>
@@ -162,7 +162,7 @@
         <li>Juan José Martínez López</li>
         <li>Juan José Rocio Villanueva</li>
       </ul>
-      <button class="btn">Cerrar</button>
+      <a class="btn" href="#">Cerrar</a>
     </div>
   </div>
   @if ($errors->any())
