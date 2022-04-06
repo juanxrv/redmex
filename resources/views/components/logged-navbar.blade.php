@@ -18,7 +18,13 @@
 <div id="header-user-profile">
   <div id="header-user-profile-click" class="noselect">
     {{-- <img src="http://via.placeholder.com/80x80" alt="{{ auth()->user()->name }}"> --}}
-    <div class="avatar">{{ Str::upper(substr(auth()->user()->name, 0, 1)) }}</div>
+    <div class="avatar {{auth()->user()->avatar == 'M' ? 'hombre' : 'mujer'}}">
+      @if(auth()->user()->avatar != '')
+        <i class="fas fa-user ml-0"></i>
+      @else
+        {{ Str::upper(substr(auth()->user()->name, 0, 1)) }}
+      @endif
+    </div>
     <div id="header-username">{{ auth()->user()->name }}</div><i class="fas fa-angle-down"></i>
   </div><!-- close #header-user-profile-click -->
   <div id="header-user-profile-menu">

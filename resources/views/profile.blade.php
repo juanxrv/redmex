@@ -10,7 +10,13 @@
         <div id="content-sidebar-info">
           {{-- <div id="avatar-sidebar-large-profile" style="background-image:url('http://via.placeholder.com/400x500')">
           </div> --}}
-          <div class="avatar large-avatar">{{ Str::upper(substr(auth()->user()->name, 0, 1)) }}</div>
+          <div class="avatar-profile large-avatar {{auth()->user()->avatar == 'M' ? 'hombre' : 'mujer'}}">
+            @if (auth()->user()->avatar != '')
+              <i class="fas fa-user ml-0"></i>
+            @else
+              {{ Str::upper(substr(auth()->user()->name, 0, 1)) }}
+            @endif
+          </div>
           <div id="profile-sidebar-gradient"></div>
           <a href="#!" class="edit-profile-sidebar" data-dismiss="modal" aria-label="Close" data-toggle="modal"
             data-target="#UpdateModal">Editar perfil</a>
