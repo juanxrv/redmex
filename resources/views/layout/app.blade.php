@@ -52,6 +52,20 @@
       </div><!-- close .row -->
     </div><!-- close .container -->
 
+    <div id="delmango" class="delmango">
+      <div class="delmango-container">
+        <img src="{{ asset('images/mango.png') }}" alt="Secta del mango">
+        <h2>Colaboradores</h2>
+        <ul>
+          <li>Brandon Alexis Villalobos López</li>
+          <li>Lidia Guadalupe Ramírez Soto</li>
+          <li>Juan José Martínez López</li>
+          <li>Juan José Rocio Villanueva</li>
+        </ul>
+        <a class="btn" href="#">Cerrar</a>
+      </div>
+    </div>
+
   </footer>
   <!-- Required Framework JavaScript -->
   <script src="{{ asset('js/libs/jquery-3.5.1.min.js') }}"></script><!-- jQuery -->
