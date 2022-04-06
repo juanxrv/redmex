@@ -18,7 +18,7 @@ class WatchController extends Controller
       'media_genre' => $detail['genres'][0]['name'],
       'media_vote' => $detail['vote_average'],
       'media_img' => mediaImg('original', $detail['backdrop_path']) ?? asset('images/not_found.svg'),
-      'cliente_email' => Auth::user()->email
+      'cliente_id' => Auth::user()->id
     ]);
     $history->save();
 

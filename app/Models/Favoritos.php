@@ -16,7 +16,7 @@ class Favoritos extends Model
     'media_genre',
     'media_vote',
     'media_img',
-    'cliente_email'
+    'cliente_id'
   ];
   public $timestamps = false;
   

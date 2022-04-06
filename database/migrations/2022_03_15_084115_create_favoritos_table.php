@@ -22,9 +22,9 @@ return new class extends Migration
       $table->string('media_genre');
       $table->double('media_vote');
       $table->string('media_img');
-      $table->string('cliente_email');
-      $table->foreign('cliente_email')
-            ->references('email')
+      $table->bigInteger('cliente_id')->unsigned();
+      $table->foreign('cliente_id')
+            ->references('id')
             ->on('users');
     });
   }

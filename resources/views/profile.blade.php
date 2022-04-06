@@ -145,9 +145,9 @@
                   </select>
                 </div>
               </div>
-              {{-- <div class="form-group">
+              <div class="form-group">
                 <input type="email" name="email" class="form-control" placeholder="Nuevo correo">
-              </div> --}}
+              </div>
               <div class="form-group">
                 <input type="password" name="password" class="form-control" placeholder="Nueva contraseña">
               </div>
@@ -216,4 +216,24 @@
       container.appendChild(fragment);
     }
   </script>
+
+  @if (isset($errors))
+    <div class="status-msg error">
+      <div class="d-flex flex-column">
+        <h3 class="text-white-50 text-center m-2">:(</h3>
+        @foreach ($errors->all() as $error)
+          <p class="text-white mb-1 text-center">{{ $error }}</p>
+        @endforeach
+      </div>
+    </div>
+    <script>
+      const status = document.querySelector('.status-msg');
+      status.style.visibility = 'visible';
+      status.style.opacity = '0.7';
+      setTimeout(() => {
+        status.style.visibility = 'hidden';
+        status.style.opacity = '0';
+      }, 5000);
+    </script>
+  @endif
 @endsection
