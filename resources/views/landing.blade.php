@@ -29,13 +29,13 @@
             <div class="col col-12 col-md-4 col-lg-4">
               <div class="pricing-plan-container selected">
                 <i class="fas fa-check"></i>
-                <h3>Membresía Redmex</h3>
-                <h4>$249<span>/mes</span></h4>
+                <h3>Regístrate ahora</h3>
+                <h4>$0<span>/mes</span></h4>
                 <ul>
-                  <li>Sin anuncios</li>
+                  <li>Sin publicidad invasiva</li>
                   <li>Disfruta desde tu navegador o móvil</li>
-                  <li>El mayor catalogo del mundo</li>
-                  <li>Prueba gratuita de 30 días</li>
+                  <li>El mayor catalogo gratuito del mundo</li>
+                  {{-- <li>Prueba gratuita de 30 días</li> --}}
                 </ul>
 
               </div><!-- close .pricing-plan-container -->
@@ -85,10 +85,10 @@
                 <input type="password" name="password" class="form-control" placeholder="Contraseña">
               </div>
               <div class="container-fluid">
-                <div class="row no-gutters">
+                {{-- <div class="row no-gutters">
 
                   <div class="col forgot-your-password"><a href="#!">¿Olvidaste tu contraseña?</a></div>
-                </div>
+                </div> --}}
               </div><!-- close .container-fluid -->
               <div class="form-group aligncenter">
                 <button type="submit" class="btn">Iniciar sesión</button>
