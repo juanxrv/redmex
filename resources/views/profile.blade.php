@@ -56,14 +56,14 @@
         </ul>
         <!-- close #dashboard-sub-menu -->
 
-        <div class="row">
+        <div id="container" class="row">
 
           <template id="histfav">
             <div class="col col-12 col-md-6 col-lg-6 smooth-anim">
               <div class="progression-studios-video-index-container">
-                <a class="watchlink" href="video-post.html">
+                <a class="watchlink" href="#">
                   <div class="progression-studios-video-feaured-image">
-                    <img class="backdrop" src="http://via.placeholder.com/700x480" alt="Featured Image">
+                    <img class="backdrop" src="#" alt="Featured Image">
                   </div>
 
                   <div class="progression-video-index-content">
@@ -139,7 +139,7 @@
               <div class="form-group">
                 <div class="mb-3">
                   <select class="form-control text-white" name="avatar" style="background: #161424">
-                    <option value="" disabled>Avatar</option>
+                    <option value="" selected disabled>Avatar</option>
                     <option value="M">Masculino</option>
                     <option value="F">Femenino</option>
                   </select>
@@ -171,7 +171,7 @@
 
   <script>
     const template = document.querySelector('#histfav').content;
-    const container = document.querySelector('.row');
+    const container = document.querySelector('#container');
     const fragment = document.createDocumentFragment();
     const headers = {
       'Authorization': `Bearer {{ session('token') }}`
@@ -208,7 +208,7 @@
         template.querySelector('.watchlink').href = `/watch/${e.media_type}/${e.media_id}`;
         template.querySelector('.backdrop').src = e.media_img;
         template.querySelector('.progression-video-title').textContent = e.media_name;
-        template.querySelector('.average-rating-overflow-width').style.width = `${e.vote*10}%`;
+        template.querySelector('.average-rating-overflow-width').style.width = `${e.media_vote*10}%`;
         template.querySelector('.genre').textContent = e.media_genre;
         let clone = document.importNode(template, true);
         fragment.appendChild(clone);

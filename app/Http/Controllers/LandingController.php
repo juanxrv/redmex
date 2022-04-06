@@ -13,5 +13,7 @@ class LandingController extends Controller
     return view('landing', [
       'data' => $trending
     ]);
+    // FIXME: Reparar media_overview de los favoritos cuando sea nulo.
+    // TODO: Hacer avatar.
   }
 }

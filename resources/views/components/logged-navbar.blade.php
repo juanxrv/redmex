@@ -24,9 +24,9 @@
   <div id="header-user-profile-menu">
     <ul>
       <li><a href="{{ route('profile') }}"><i class="fa fa-user-circle"></i>Perfil</a></li>
-      <li><a href="#!"><i class="fa fa-cogs"></i>Editar perfil</a></li>
-      <li><a href="profile.html"><i class="fa fa-list-ul"></i>Favoritos</a></li>
-      <li><a href="membership-plan.html"><i class="fa fa-credit-card"></i>Suscripción</a></li>
+      {{-- <li><a href="#!"><i class="fa fa-cogs"></i>Editar perfil</a></li> --}}
+      <li><a href="{{ route('profile') }}"><i class="fa fa-list-ul"></i>Favoritos</a></li>
+      {{-- <li><a href="membership-plan.html"><i class="fa fa-credit-card"></i>Suscripción</a></li> --}}
       <li><a id="logout" href="#"><i class="fa fa-power-off"></i>Salir</a></li>
     </ul>
   </div><!-- close #header-user-profile-menu -->
@@ -84,3 +84,9 @@
 
 </nav>
 <div id="progression-studios-header-shadow"></div>
+
+<script>
+  document.querySelector('.reset-btn').addEventListener('click', () => {
+    document.querySelector('#video-search-header-filtering-padding').reset();
+  });
+</script>

@@ -38,13 +38,13 @@
   <footer id="footer-pro">
     <div class="container">
       <div class="row">
-        @auth
-          <div class="col-12 col-md-6">
-            <div class="copyright-text-pro">Redmex &copy; Todos los derechos reservados. <a
-                href="{{ route('about') }}">¿Quiénes somos?</a>
-            </div>
-          </div><!-- close .col -->
-        @endauth
+        <div class="col-12 col-md-6">
+          <div class="copyright-text-pro">Redmex &copy; Todos los derechos reservados.
+            @auth
+              <a href="{{ route('about') }}">¿Quiénes somos?</a>
+            @endauth
+          </div>
+        </div><!-- close .col -->
         <div class="col-12 col-md-6">
           <div class="copyright-text-pro text-left text-md-right">Desarrollado por <a href="#!">Secta del Mango</a>.
           </div>
