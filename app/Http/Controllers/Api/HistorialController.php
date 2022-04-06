@@ -38,7 +38,7 @@ class HistorialController extends Controller
       'media_vote' => 'required',
       'media_img' => 'required'
     ]);
-    $historial = Historial::create([
+    $historial = Historial::firstOrNew([
       'media_id' => $request->media_id,
       'media_type' => $request->media_type,
       'media_name' => $request->media_name,

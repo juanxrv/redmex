@@ -67,7 +67,7 @@
   const template = document.querySelector('#episodio').content;
   const fragment = document.createDocumentFragment();
   const imgbase = 'https://image.tmdb.org/t/p/w500';
-  const token = '{{ session('token') }}';
+  const token = `{{ session('token') }}`;
   let imgSrc;
 
   function getEpisodes(selected) {

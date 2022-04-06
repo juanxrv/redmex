@@ -18,12 +18,12 @@
 <div id="header-user-profile">
   <div id="header-user-profile-click" class="noselect">
     {{-- <img src="http://via.placeholder.com/80x80" alt="{{ auth()->user()->name }}"> --}}
-    <div class="avatar">{{ substr(auth()->user()->name, 0, 1) }}</div>
+    <div class="avatar">{{ Str::upper(substr(auth()->user()->name, 0, 1)) }}</div>
     <div id="header-username">{{ auth()->user()->name }}</div><i class="fas fa-angle-down"></i>
   </div><!-- close #header-user-profile-click -->
   <div id="header-user-profile-menu">
     <ul>
-      <li><a href="profile.html"><i class="fa fa-user-circle"></i>Perfil</a></li>
+      <li><a href="{{ route('profile') }}"><i class="fa fa-user-circle"></i>Perfil</a></li>
       <li><a href="#!"><i class="fa fa-cogs"></i>Editar perfil</a></li>
       <li><a href="profile.html"><i class="fa fa-list-ul"></i>Favoritos</a></li>
       <li><a href="membership-plan.html"><i class="fa fa-credit-card"></i>Suscripción</a></li>
@@ -40,7 +40,6 @@
 <div id="video-search-header">
   <div class="container">
 
-
     <div id="video-search-header-filtering">
       <form method="GET" action="{{ route('search') }}" id="video-search-header-filtering-padding">
         <input type="text" placeholder="Búscar películas o series" name="query" aria-label="Search"
@@ -54,8 +53,6 @@
 
   </div><!-- close .container -->
 </div><!-- close .video-search-header -->
-
-
 
 <div class="clearfix"></div>
 </div><!-- close .header-container -->

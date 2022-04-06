@@ -14,10 +14,12 @@ class SignupController extends Controller
   {
     $request->validate([
       'name' => 'required',
-      'email' => 'required|email',
+      'email' => 'required|email|unique:users',
       'password' => 'required|confirmed'
     ], [
       'password.confirmed' => 'Las contraseñas no coinciden.',
+      'email' => 'El correo debe ser válido.',
+      'email.unique' => 'El correo ya está en uso.',
       'password.required' => 'La contraseña es obligatoria.'
     ]);
     date_default_timezone_set('America/Mexico_City');

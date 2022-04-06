@@ -13,7 +13,7 @@ class WatchController extends Controller
     $history = Historial::firstOrNew([
       'media_id' => $id,
       'media_type' => $media_type,
-      'media_name' => $detail['title'] ?? $detail['name'] ,
+      'media_name' => $detail['title'] ?? $detail['name'],
       'media_overview' => $detail['overview'],
       'media_genre' => $detail['genres'][0]['name'],
       'media_vote' => $detail['vote_average'],

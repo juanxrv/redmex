@@ -92,12 +92,13 @@
             <form method="POST" action="{{ route('contact') }}">
               @csrf
               <div class="form-group">
-                {{-- <input type="text" name="name" class="form-control" placeholder="Nombre" required> --}}
+                <input type="text" class="form-control" placeholder="Nombre" value="{{ auth()->user()->name }}"
+                  disabled style="background: #161424; color: rgb(104, 104, 104)">
               </div>
               <div class="form-group d-flex flex-column align-items-end">
-                <label class="text-muted"><strong>{{ auth()->user()->name }}</strong></label>
-                <label class="text-muted"><strong>{{ auth()->user()->email }}</strong></label>
-                {{-- <input type="email" name="email" class="form-control" placeholder="Correo" required> --}}
+                {{-- <label class="text-muted"><strong>{{ auth()->user()->email }}</strong></label> --}}
+                <input type="email" class="form-control" placeholder="Correo" value="{{ auth()->user()->email }}"
+                  disabled style="background: #161424; color: rgb(104, 104, 104)">
               </div>
               <div class="form-group">
                 <input type="text" name="subject" class="form-control" placeholder="Asunto" required>

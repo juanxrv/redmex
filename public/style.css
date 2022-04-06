@@ -3950,7 +3950,7 @@ ul#profile-watched-stats li {
 }
 
 ul#profile-watched-stats li:last-child {
-  border-left: none;
+  /* border-left: none; */
 }
 
 ul#profile-watched-stats span {
