@@ -152,7 +152,7 @@
       </div><!-- close .modal-content -->
     </div><!-- close .modal-dialog -->
   </div><!-- close .modal -->
-  @if (isset($errors))
+  @if ($errors->any())
     <div class="status-msg error">
       <div class="d-flex flex-column">
         <h3 class="text-white-50 text-center m-2">:(</h3>

@@ -12,8 +12,5 @@ class SeriesController extends Controller
       'data' => $series,
       'genres' => $genres['genres']
     ]);
-    // TODO: Mostrar mensaje de error al ingresar credenciales incorrectas.
-    // FIXME: Reparar botones de navegación móvil.
-    // TODO: Crear página de perfil de usuario y edición de este.
   }
 }
