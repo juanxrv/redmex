@@ -128,7 +128,7 @@
       media_type: `{{ $media_type }}`,
       media_name: `{{ $data['title'] ?? $data['name'] }}`,
       media_overview: `{{ $data['overview'] ? $data['overview'] : '...' }}`,
-      media_genre: `{{ $data['genres'][0]['name'] }}`,
+      media_genre: `{{ $data['genres'] ? $data['genres'][0]['name'] : 'Sin categoria' }}`,
       media_vote: {{ $data['vote_average'] }},
       media_img: `{{ mediaImg('original', $data['backdrop_path']) }}`
     };

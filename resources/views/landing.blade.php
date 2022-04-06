@@ -152,6 +152,19 @@
       </div><!-- close .modal-content -->
     </div><!-- close .modal-dialog -->
   </div><!-- close .modal -->
+  <div class="delmango">
+    <div class="delmango-container">
+      <img src="{{ asset('images/mango.png') }}" alt="Secta del mango">
+      <h2>Colaboradores</h2>
+      <ul>
+        <li>Brandon Alexis Villalobos López</li>
+        <li>Lidia Guadalupe Ramírez Soto</li>
+        <li>Juan José Martínez López</li>
+        <li>Juan José Rocio Villanueva</li>
+      </ul>
+      <button class="btn">Cerrar</button>
+    </div>
+  </div>
   @if ($errors->any())
     <div class="status-msg error">
       <div class="d-flex flex-column">

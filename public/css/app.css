@@ -136,3 +136,34 @@
   width: 100%;
   max-width: 300px;
 }
+
+.delmango {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.801);
+  display: flex;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.delmango-container img {
+  position: absolute;
+  width: 400px;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.delmango-container {
+  position: relative;
+  width: 50%;
+  max-width: 700px;
+
+}
