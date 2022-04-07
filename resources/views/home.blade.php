@@ -163,13 +163,13 @@
 
       <h2 class="post-list-heading">Popular<span>Encuentra algo nuevo para ver</span></h2>
 
-      <div class="row">
+      {{-- <div class="row"> --}}
 
-        <x-popular :data="['dataPopular' => $dataPopular, 'genres' => $genres, 'page' => $page]" />
-        <div id="popular"></div>
+        {{-- <x-popular :data="['dataPopular' => $dataPopular, 'genres' => $genres, 'page' => $page]" /> --}}
+        @livewire('popular')
+        {{-- <div id="popular"></div> --}}
 
-        <div class="clearfix"></div>
-      </div><!-- close .container -->
+      {{-- </div><!-- close .container --> --}}
 
     </div><!-- close #content-pro -->
     <a href="#0" id="pro-scroll-top"><i class="fas fa-chevron-up"></i></a>

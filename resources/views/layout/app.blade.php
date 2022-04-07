@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{ asset('icons/fontawesome/css/all.min.css') }}"><!-- FontAwesome Icons -->
   <link rel="stylesheet" href="{{ asset('icons/dashicons/css/dashicons-min.css') }}">
   <!-- DashIcons For Star Ratings -->
+  @livewireStyles
 
   <title>Redmex - @yield('title')</title>
 </head>
@@ -96,6 +97,7 @@
       });
     }
   </script>
+  @livewireScripts
 </body>
 
 </html>
