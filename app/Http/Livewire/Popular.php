@@ -6,15 +6,20 @@ use Livewire\Component;
 
 class Popular extends Component
 {
+  public $page = 1;
   public function render()
   {
-    $page = 1;
     $genres = movieDb('/genre/list');
-    $popular = movieDb('/tv/popular', $page);
+    $popular = movieDb('/tv/popular', $this->page);
     return view('livewire.popular', [
       'dataPopular' => $popular['results'],
       'genres' => $genres['genres'],
-      'page' => $page
+      'page' => $this->page
     ]);
+  }
+
+  public function goto($page)
+  {
+    $this->page = $page;
   }
 }
