@@ -16,7 +16,7 @@ class Historial extends Model
     'media_genre',
     'media_vote',
     'media_img',
-    'cliente_id'
+    'user_id'
   ];
   public $timestamps = false;
   

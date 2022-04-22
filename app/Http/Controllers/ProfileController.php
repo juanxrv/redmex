@@ -10,6 +10,7 @@ class ProfileController extends Controller
 {
   public function index()
   {
+    // dd(auth()->user()->favoritos[1]->media_name);
     return view('profile');
   }
 

@@ -16,12 +16,12 @@ class Favoritos extends Model
     'media_genre',
     'media_vote',
     'media_img',
-    'cliente_id'
+    'user_id'
   ];
   public $timestamps = false;
   
   public function users()
   {
-    return $this->hasMany(User::class);
+    return $this->belongsTo(User::class);
   }
 }

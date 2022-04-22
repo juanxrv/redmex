@@ -10,7 +10,7 @@ class FavoritosController extends Controller
 {
   public function index(Request $request)
   {
-    $favs = Favoritos::where('cliente_id', $request->user()->id)
+    $favs = Favoritos::where('user_id', $request->user()->id)
       ->select('id', 'media_id', 'media_type', 'media_name', 'media_overview', 'media_genre', 'media_vote', 'media_img')
       ->get();
     if (count($favs) > 0) {
@@ -46,7 +46,7 @@ class FavoritosController extends Controller
       'media_genre' => $request->media_genre,
       'media_vote' => $request->media_vote,
       'media_img' => $request->media_img,
-      'cliente_id' => $request->user()->id
+      'user_id' => $request->user()->id
     ]);
     $favorito->save();
     return response()->json([
